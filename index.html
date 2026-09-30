@@ -251,64 +251,49 @@
             });
         }
 
-        // 4. API Jadwal Sholat Presisi Surabaya (Koordinat Presisi + Method Kemenag SIHAT)
+        // 4. API Bimas Islam Kemenag RI (Kota Surabaya - Kode: 1301)
         async function fetchJadwalSholat() {
             try {
                 const today = new Date();
-                const year = today.getFullYear();
-                const month = today.getMonth() + 1;
-                const day = today.getDate();
+                const tahun = today.getFullYear();
+                const bulan = String(today.getMonth() + 1).padStart(2, '0');
+                const tanggal = String(today.getDate()).padStart(2, '0');
 
-                // API Aladhan dengan Koordinat Tepat Surabaya (-7.2575, 112.7521) & Metode Kemenag RI (20)
-                const url = `https://api.aladhan.com/v1/timings/${day}-${month}-${year}?latitude=-7.2575&longitude=112.7521&method=20`;
+                // Mengambil Data Tabel Bimas Islam Kemenag RI untuk Kota Surabaya (1301)
+                const url = `https://api.myquran.com/v2/sholat/jadwal/1301/${tahun}/${bulan}/${tanggal}`;
                 const response = await fetch(url);
                 const result = await response.json();
 
-                if (result.code === 200 && result.data && result.data.timings) {
-                    const t = result.data.timings;
-                    
-                    // Format Jam HH:MM
+                if (result.status && result.data && result.data.jadwal) {
+                    const j = result.data.jadwal;
+
                     prayerTimesData = { 
-                        subuh: t.Fajr.substring(0, 5), 
-                        syuruq: t.Sunrise.substring(0, 5), 
-                        dzuhur: t.Dhuhr.substring(0, 5), 
-                        ashar: t.Asr.substring(0, 5), 
-                        maghrib: t.Maghrib.substring(0, 5), 
-                        isya: t.Isha.substring(0, 5) 
+                        subuh: j.subuh, 
+                        syuruq: j.terbit, 
+                        dzuhur: j.dzuhur, 
+                        ashar: j.ashar, 
+                        maghrib: j.maghrib, 
+                        isya: j.isya 
                     };
 
-                    renderJadwal();
+                    document.getElementById('waktu-subuh').textContent = j.subuh;
+                    document.getElementById('waktu-syuruq').textContent = j.terbit; 
+                    document.getElementById('waktu-dzuhur').textContent = j.dzuhur;
+                    document.getElementById('waktu-ashar').textContent = j.ashar;
+                    document.getElementById('waktu-maghrib').textContent = j.maghrib;
+                    document.getElementById('waktu-isya').textContent = j.isya;
+
+                    highlightNextPrayer(new Date());
                 } else {
-                    throw new Error("Respon API tidak valid");
+                    throw new Error("Gagal parsing data Kemenag");
                 }
             } catch (error) {
-                console.warn("Gagal mengambil API Online, menggunakan hitungan internal Surabaya:", error);
-                // Fallback Hitungan Presisi Surabaya jika API offline
-                prayerTimesData = { 
-                    subuh: "04:02", 
-                    syuruq: "05:14", 
-                    dzuhur: "11:23", 
-                    ashar: "14:30", 
-                    maghrib: "17:27", 
-                    isya: "18:36" 
-                };
-                renderJadwal();
+                console.error("Gagal mengambil API Kemenag Bimas Islam:", error);
             }
         }
 
-        function renderJadwal() {
-            document.getElementById('waktu-subuh').textContent = prayerTimesData.subuh;
-            document.getElementById('waktu-syuruq').textContent = prayerTimesData.syuruq; 
-            document.getElementById('waktu-dzuhur').textContent = prayerTimesData.dzuhur;
-            document.getElementById('waktu-ashar').textContent = prayerTimesData.ashar;
-            document.getElementById('waktu-maghrib').textContent = prayerTimesData.maghrib;
-            document.getElementById('waktu-isya').textContent = prayerTimesData.isya;
-
-            highlightNextPrayer(new Date());
-        }
-
         fetchJadwalSholat();
-        setInterval(fetchJadwalSholat, 3600000);
+        setInterval(fetchJadwalSholat, 3600000); // Sinkronkan ulang setiap 1 jam
     </script>
 </body>
 </html>
