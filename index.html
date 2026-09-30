@@ -16,87 +16,83 @@
             0%   { transform: translate(0, 0); }
             100% { transform: translate(-100%, 0); }
         }
-        ::-webkit-scrollbar { width: 4px; }
-        ::-webkit-scrollbar-thumb { background: #D4AF37; border-radius: 4px; }
+        body { overflow: hidden; }
     </style>
 </head>
-<body class="bg-emerald-900 text-white h-screen w-screen flex flex-col font-sans overflow-x-hidden lg:overflow-hidden select-none">
+<body class="bg-emerald-900 text-white h-screen w-screen flex flex-col font-sans">
 
-    <!-- Header Responsif (Tinggi Tetap) -->
-    <header class="bg-emerald-950 flex flex-col sm:flex-row justify-between items-center px-5 py-3 shadow-lg h-auto sm:h-24 border-b-4 border-[#D4AF37] shrink-0 gap-2 sm:gap-0">
-        <div class="flex items-center gap-4 text-center sm:text-left">
-            <div class="w-12 h-12 sm:w-16 sm:h-16 bg-white rounded-full flex items-center justify-center text-emerald-900 font-bold text-2xl sm:text-3xl shadow-md border-2 border-[#D4AF37] shrink-0">M</div>
+    <!-- Header dengan Aksen Emas Elegan -->
+    <header class="bg-emerald-950 flex justify-between items-center p-5 shadow-lg h-28 border-b-4 border-[#D4AF37]">
+        <div class="flex items-center gap-5">
+            <div class="w-16 h-16 bg-white rounded-full flex items-center justify-center text-emerald-900 font-bold text-3xl shadow-md border-2 border-[#D4AF37]">M</div>
             <div>
-                <h1 id="nama-masjid" class="text-2xl sm:text-3xl lg:text-3xl font-bold uppercase tracking-widest text-[#E5C158] drop-shadow">Memuat...</h1>
-                <p id="tagline-masjid" class="text-emerald-200 text-xs sm:text-sm lg:text-base tracking-wide line-clamp-1">Memuat...</p>
+                <h1 id="nama-masjid" class="text-4xl font-bold uppercase tracking-widest text-[#E5C158] drop-shadow">Memuat...</h1>
+                <p id="tagline-masjid" class="text-emerald-200 text-xl tracking-wide">Memuat...</p>
             </div>
         </div>
-        <div class="text-center sm:text-right">
-            <h2 id="jam" class="text-3xl sm:text-4xl lg:text-5xl font-bold font-mono text-white tracking-widest drop-shadow">00:00:00</h2>
-            <p id="tanggal" class="text-xs sm:text-sm lg:text-base mt-0.5 text-emerald-200">Memuat tanggal...</p>
+        <div class="text-right">
+            <h2 id="jam" class="text-6xl font-bold font-mono text-white tracking-widest drop-shadow">00:00:00</h2>
+            <p id="tanggal" class="text-xl mt-1 text-emerald-200">Memuat tanggal...</p>
         </div>
     </header>
 
-    <!-- Konten Utama: Seimbang 50:50 & Terkunci Presisi -->
-    <main class="flex-1 flex flex-col lg:flex-row gap-4 p-4 min-h-0 overflow-y-auto lg:overflow-hidden">
-        
-        <!-- Area Slider Gambar (Kiri - Lebar 50% & Tinggi Mengisi Penuh) -->
-        <div class="w-full lg:w-1/2 h-64 sm:h-80 lg:h-full bg-black rounded-2xl overflow-hidden relative shadow-2xl border-2 sm:border-4 border-emerald-800 flex items-center justify-center shrink-0 lg:shrink">
-            <img id="poster-img" src="" alt="Slider" class="w-full h-full object-contain transition-opacity duration-700">
-            
-            <!-- Overlay Transparan Cerdas -->
-            <div id="poster-overlay" class="absolute bottom-0 left-0 w-full bg-gradient-to-t from-black/90 via-black/60 to-transparent p-4 sm:p-5 transition-all duration-300">
-                <h2 id="poster-judul" class="text-base sm:text-lg lg:text-xl font-bold text-[#E5C158] drop-shadow-md"></h2>
-                <p id="poster-deskripsi" class="text-xs sm:text-sm lg:text-base mt-0.5 text-white line-clamp-2"></p>
+    <!-- Konten Utama (Seimbang 50:50) -->
+    <main class="flex-1 flex gap-5 p-5 h-full overflow-hidden">
+        <!-- Area Slider Gambar (Kiri - Lebar 6/12 / 50%) -->
+        <div class="w-6/12 bg-black rounded-2xl overflow-hidden relative shadow-2xl border-4 border-emerald-800 flex items-center justify-center">
+            <img id="poster-img" src="" alt="Slider" class="w-full h-full object-cover opacity-85 transition-opacity duration-700">
+            <div class="absolute bottom-0 left-0 w-full bg-gradient-to-t from-black via-black/70 to-transparent p-6">
+                <h2 id="poster-judul" class="text-3xl font-bold text-[#E5C158] drop-shadow-md">Memuat...</h2>
+                <p id="poster-deskripsi" class="text-xl mt-2 text-white">Memuat...</p>
             </div>
         </div>
 
-        <!-- Area Jadwal Khotib & Bilal (Kanan - Lebar 50% & Tinggi Mengisi Penuh) -->
-        <div class="w-full lg:w-1/2 h-auto lg:h-full bg-emerald-800 rounded-2xl shadow-2xl flex flex-col overflow-hidden border-2 border-emerald-700 p-4 shrink-0 lg:shrink">
-            <div class="bg-emerald-950 p-2.5 text-center border-b-2 border-[#D4AF37] rounded-xl mb-3 shrink-0">
-                <h3 class="text-sm sm:text-base lg:text-lg font-bold text-[#E5C158] uppercase tracking-widest">Jadwal Khotib & Bilal Bulan Ini</h3>
+        <!-- Area Jadwal Khotib & Bilal (Kanan - Lebar 6/12 / 50%) -->
+        <div class="w-6/12 bg-emerald-800 rounded-2xl shadow-2xl flex flex-col overflow-hidden border-2 border-emerald-700 p-5">
+            <div class="bg-emerald-950 p-3 text-center border-b-2 border-[#D4AF37] rounded-xl mb-3">
+                <h3 class="text-2xl font-bold text-[#E5C158] uppercase tracking-widest">Jadwal Khotib & Bilal Bulan Ini</h3>
             </div>
             
-            <!-- Grid Khutbah 2 Kolom Seimbang -->
-            <div id="container-khutbah" class="flex-1 grid grid-cols-1 sm:grid-cols-2 gap-3 content-start overflow-y-auto pr-1">
-                <!-- Data JSON akan dimuat di sini -->
+            <!-- Container Grid Menyamping -->
+            <div id="container-khutbah" class="flex-1 grid grid-cols-2 gap-3 content-start">
+                <!-- Data dari JSON akan masuk ke sini secara dinamis -->
             </div>
         </div>
     </main>
 
-    <!-- Panel Waktu Sholat (Tinggi Tetap) -->
-    <section class="bg-emerald-950 p-3 sm:p-4 shadow-inner border-t-2 border-emerald-800 shrink-0">
-        <div class="grid grid-cols-3 sm:grid-cols-6 gap-2 sm:gap-3 text-center">
-            <div id="box-subuh" class="bg-emerald-800 py-2 rounded-xl border border-emerald-600 shadow-md transition-all duration-300">
-                <p id="title-subuh" class="text-[#E5C158] font-semibold uppercase tracking-wider text-[10px] sm:text-xs">Subuh</p>
-                <p id="waktu-subuh" class="text-lg sm:text-2xl lg:text-3xl font-bold mt-0.5 text-white">--:--</p>
+    <!-- Panel Waktu Sholat -->
+    <section class="bg-emerald-950 p-5 shadow-inner border-t-2 border-emerald-800">
+        <div class="grid grid-cols-6 gap-4 text-center">
+            <div class="bg-emerald-800 py-3 rounded-xl border border-emerald-600 shadow-md">
+                <p class="text-[#E5C158] font-semibold uppercase tracking-wider text-sm">Subuh</p>
+                <p id="waktu-subuh" class="text-4xl font-bold mt-1 text-white">--:--</p>
             </div>
-            <div id="box-syuruq" class="bg-emerald-800 py-2 rounded-xl border border-emerald-600 shadow-md transition-all duration-300">
-                <p id="title-syuruq" class="text-[#E5C158] font-semibold uppercase tracking-wider text-[10px] sm:text-xs">Syuruq</p>
-                <p id="waktu-syuruq" class="text-lg sm:text-2xl lg:text-3xl font-bold mt-0.5 text-white">--:--</p>
+            <div class="bg-emerald-800 py-3 rounded-xl border border-emerald-600 shadow-md">
+                <p class="text-[#E5C158] font-semibold uppercase tracking-wider text-sm">Syuruq</p>
+                <p id="waktu-syuruq" class="text-4xl font-bold mt-1 text-white">--:--</p>
             </div>
-            <div id="box-dzuhur" class="bg-emerald-800 py-2 rounded-xl border border-emerald-600 shadow-md transition-all duration-300">
-                <p id="title-dzuhur" class="text-[#E5C158] font-semibold uppercase tracking-wider text-[10px] sm:text-xs">Dzuhur</p>
-                <p id="waktu-dzuhur" class="text-lg sm:text-2xl lg:text-3xl font-bold mt-0.5 text-white">--:--</p>
+            <div class="bg-emerald-800 py-3 rounded-xl border border-emerald-600 shadow-md">
+                <p class="text-[#E5C158] font-semibold uppercase tracking-wider text-sm">Dzuhur</p>
+                <p id="waktu-dzuhur" class="text-4xl font-bold mt-1 text-white">--:--</p>
             </div>
-            <div id="box-ashar" class="bg-emerald-800 py-2 rounded-xl border border-emerald-600 shadow-md transition-all duration-300">
-                <p id="title-ashar" class="text-[#E5C158] font-semibold uppercase tracking-wider text-[10px] sm:text-xs">Ashar</p>
-                <p id="waktu-ashar" class="text-lg sm:text-2xl lg:text-3xl font-bold mt-0.5 text-white">--:--</p>
+            <div class="bg-emerald-800 py-3 rounded-xl border border-emerald-600 shadow-md">
+                <p class="text-[#E5C158] font-semibold uppercase tracking-wider text-sm">Ashar</p>
+                <p id="waktu-ashar" class="text-4xl font-bold mt-1 text-white">--:--</p>
             </div>
-            <div id="box-maghrib" class="bg-emerald-800 py-2 rounded-xl border border-emerald-600 shadow-md transition-all duration-300">
-                <p id="title-maghrib" class="text-[#E5C158] font-semibold uppercase tracking-wider text-[10px] sm:text-xs">Maghrib</p>
-                <p id="waktu-maghrib" class="text-lg sm:text-2xl lg:text-3xl font-bold mt-0.5 text-white">--:--</p>
+            <div class="bg-emerald-800 py-3 rounded-xl border border-emerald-600 shadow-md">
+                <p class="text-[#E5C158] font-semibold uppercase tracking-wider text-sm">Maghrib</p>
+                <p id="waktu-maghrib" class="text-4xl font-bold mt-1 text-white">--:--</p>
             </div>
-            <div id="box-isya" class="bg-emerald-800 py-2 rounded-xl border border-emerald-600 shadow-md transition-all duration-300">
-                <p id="title-isya" class="text-[#E5C158] font-semibold uppercase tracking-wider text-[10px] sm:text-xs">Isya</p>
-                <p id="waktu-isya" class="text-lg sm:text-2xl lg:text-3xl font-bold mt-0.5 text-white">--:--</p>
+            <div class="bg-emerald-800 py-3 rounded-xl border border-emerald-600 shadow-md">
+                <p class="text-[#E5C158] font-semibold uppercase tracking-wider text-sm">Isya</p>
+                <p id="waktu-isya" class="text-4xl font-bold mt-1 text-white">--:--</p>
             </div>
         </div>
     </section>
 
-    <!-- Footer Running Text (Tinggi Tetap) -->
-    <footer class="bg-black text-white h-10 sm:h-12 flex items-center overflow-hidden text-sm sm:text-base border-t border-emerald-900 shrink-0">
-        <div class="bg-[#D4AF37] text-black font-extrabold px-4 h-full flex items-center z-10 shadow-lg tracking-wider text-xs sm:text-sm shrink-0">
+    <!-- Footer Running Text -->
+    <footer class="bg-black text-white h-16 flex items-center overflow-hidden text-2xl border-t border-emerald-900">
+        <div class="bg-[#D4AF37] text-black font-extrabold px-8 h-full flex items-center z-10 shadow-lg tracking-wider">
             INFORMASI
         </div>
         <div class="flex-1 overflow-hidden relative h-full flex items-center bg-gray-900">
@@ -109,51 +105,28 @@
     <script>
         let slideData = [];
         let currentSlideIndex = 0;
-        const prayerNames = ['subuh', 'syuruq', 'dzuhur', 'ashar', 'maghrib', 'isya'];
-        let prayerTimesData = {};
 
+        // 1. Update Jam Realtime (Setiap Detik)
         function updateWaktu() {
             const waktu = new Date();
             document.getElementById('jam').textContent = `${String(waktu.getHours()).padStart(2, '0')}:${String(waktu.getMinutes()).padStart(2, '0')}:${String(waktu.getSeconds()).padStart(2, '0')}`;
-            
             const namaHari = ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jum\'at', 'Sabtu'];
             const namaBulan = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'];
             document.getElementById('tanggal').textContent = `${namaHari[waktu.getDay()]}, ${waktu.getDate()} ${namaBulan[waktu.getMonth()]} ${waktu.getFullYear()}`;
-
-            highlightNextPrayer(waktu);
         }
         setInterval(updateWaktu, 1000);
+        updateWaktu();
 
+        // Fungsi merender slide di area kiri
         function tampilkanSlide(index) {
             if (slideData.length === 0) return;
             const slide = slideData[index];
             document.getElementById('poster-img').src = slide.gambar;
-            
-            const overlay = document.getElementById('poster-overlay');
-            const judul = slide.judul ? slide.judul.trim() : '';
-            const deskripsi = slide.deskripsi ? slide.deskripsi.trim() : '';
-
-            if (!judul && !deskripsi) {
-                overlay.classList.add('hidden');
-            } else {
-                overlay.classList.remove('hidden');
-                document.getElementById('poster-judul').textContent = judul;
-                document.getElementById('poster-deskripsi').textContent = deskripsi;
-            }
+            document.getElementById('poster-judul').textContent = slide.judul || '';
+            document.getElementById('poster-deskripsi').textContent = slide.deskripsi || '';
         }
 
-        function parseTanggalIndo(str) {
-            const bulanIndo = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'];
-            const parts = str.replace(/,/g, '').split(' ');
-            if (parts.length >= 4) {
-                const hari = parseInt(parts[1]);
-                const bulan = bulanIndo.indexOf(parts[2]);
-                const tahun = parseInt(parts[3]);
-                return new Date(tahun, bulan, hari);
-            }
-            return new Date(0);
-        }
-
+        // 2. Load data.json
         async function loadDataJSON() {
             try {
                 const response = await fetch('data.json?t=' + new Date().getTime());
@@ -168,36 +141,14 @@
                     tampilkanSlide(currentSlideIndex);
                 }
 
-                const hariIni = new Date();
-                hariIni.setHours(0, 0, 0, 0);
-                let indexJumatTerdekat = -1;
-
-                for (let i = 0; i < data.jadwal_khutbah.length; i++) {
-                    let tanggalJumat = parseTanggalIndo(data.jadwal_khutbah[i].tanggal);
-                    if (tanggalJumat >= hariIni) {
-                        indexJumatTerdekat = i;
-                        break;
-                    }
-                }
-
                 const containerKhutbah = document.getElementById('container-khutbah');
                 containerKhutbah.innerHTML = ''; 
-                
-                data.jadwal_khutbah.forEach((jadwal, index) => {
-                    let cardClass = "bg-emerald-900/90 p-2.5 sm:p-3 rounded-xl border border-emerald-700/60 shadow flex flex-col justify-between relative";
-                    let badge = "";
-
-                    if (index === indexJumatTerdekat) {
-                        cardClass = "bg-emerald-900 p-2.5 sm:p-3 rounded-xl border-2 border-[#D4AF37] shadow-[0_0_12px_rgba(212,175,55,0.4)] flex flex-col justify-between relative transform scale-[1.01]";
-                        badge = `<div class="absolute -top-2.5 -right-1.5 bg-red-600 text-white text-[9px] font-bold px-2 py-0.5 rounded-full shadow-md">MINGGU INI</div>`;
-                    }
-
+                data.jadwal_khutbah.forEach(jadwal => {
                     containerKhutbah.innerHTML += `
-                        <div class="${cardClass}">
-                            ${badge}
-                            <p class="text-[10px] sm:text-xs text-[#E5C158] font-bold mb-0.5">${jadwal.tanggal}</p>
-                            <p class="text-xs sm:text-sm font-medium text-emerald-100">Khotib: <span class="font-bold text-white">${jadwal.khotib}</span></p>
-                            <p class="text-xs sm:text-sm font-bold text-emerald-100 mt-1">Bilal: <span class="text-[#E5C158]">${jadwal.bilal}</span></p>
+                        <div class="bg-emerald-900/90 p-3 rounded-xl border border-emerald-700/60 shadow flex flex-col justify-between">
+                            <p class="text-xs text-[#E5C158] font-bold mb-0.5">${jadwal.tanggal}</p>
+                            <p class="text-sm font-medium text-emerald-100">Khotib: <span class="font-bold text-white">${jadwal.khotib}</span></p>
+                            <p class="text-base font-bold text-emerald-100 mt-1">Bilal: <span class="text-[#E5C158]">${jadwal.bilal}</span></p>
                         </div>`;
                 });
             } catch (error) {
@@ -207,6 +158,7 @@
         loadDataJSON();
         setInterval(loadDataJSON, 60000); 
 
+        // 3. Slider Otomatis (7 Detik)
         setInterval(() => {
             if (slideData.length > 0) {
                 currentSlideIndex = (currentSlideIndex + 1) % slideData.length;
@@ -214,62 +166,32 @@
             }
         }, 7000);
 
-        function highlightNextPrayer(waktu) {
-            if (Object.keys(prayerTimesData).length === 0) return;
-            const currentMins = waktu.getHours() * 60 + waktu.getMinutes();
-            let nextPrayer = 'subuh';
-
-            for (let name of prayerNames) {
-                if (!prayerTimesData[name]) continue;
-                let [h, m] = prayerTimesData[name].split(':').map(Number);
-                let prayerMins = h * 60 + m;
-                if (prayerMins > currentMins) {
-                    nextPrayer = name;
-                    break;
-                }
-            }
-
-            prayerNames.forEach(name => {
-                const box = document.getElementById(`box-${name}`);
-                const title = document.getElementById(`title-${name}`);
-                const time = document.getElementById(`waktu-${name}`);
-
-                if (name === nextPrayer) {
-                    box.className = "bg-[#D4AF37] py-2 rounded-xl border-2 border-yellow-200 shadow-[0_0_12px_rgba(212,175,55,0.8)] transform scale-105 transition-all duration-300";
-                    title.className = "text-emerald-950 font-extrabold uppercase tracking-wider text-[10px] sm:text-xs";
-                    time.className = "text-lg sm:text-2xl lg:text-3xl font-extrabold mt-0.5 text-emerald-950 animate-pulse";
-                } else {
-                    box.className = "bg-emerald-800 py-2 rounded-xl border border-emerald-600 shadow-md transition-all duration-300";
-                    title.className = "text-[#E5C158] font-semibold uppercase tracking-wider text-[10px] sm:text-xs";
-                    time.className = "text-lg sm:text-2xl lg:text-3xl font-bold mt-0.5 text-white";
-                }
-            });
-        }
-
+        // 4. API Jadwal Sholat Kemenag (Surabaya ID: 1601)
         async function fetchJadwalKemenag() {
             try {
                 const today = new Date();
-                const url = `https://api.myquran.com/v2/sholat/jadwal/1601/${today.getFullYear()}/${String(today.getMonth() + 1).padStart(2, '0')}/${String(today.getDate()).padStart(2, '0')}`;
+                const tahun = today.getFullYear();
+                const bulan = String(today.getMonth() + 1).padStart(2, '0');
+                const tanggal = String(today.getDate()).padStart(2, '0');
+                
+                const url = `https://api.myquran.com/v2/sholat/jadwal/1601/${tahun}/${bulan}/${tanggal}`;
                 const response = await fetch(url);
                 const result = await response.json();
 
                 if (result.status && result.data && result.data.jadwal) {
                     const j = result.data.jadwal;
-                    prayerTimesData = { subuh: j.subuh, syuruq: j.terbit, dzuhur: j.dzuhur, ashar: j.ashar, maghrib: j.maghrib, isya: j.isya };
-                    
                     document.getElementById('waktu-subuh').textContent = j.subuh;
                     document.getElementById('waktu-syuruq').textContent = j.terbit; 
                     document.getElementById('waktu-dzuhur').textContent = j.dzuhur;
                     document.getElementById('waktu-ashar').textContent = j.ashar;
                     document.getElementById('waktu-maghrib').textContent = j.maghrib;
                     document.getElementById('waktu-isya').textContent = j.isya;
-                    
-                    highlightNextPrayer(new Date());
                 }
             } catch (error) {
                 console.error("Gagal mengambil API Kemenag:", error);
             }
         }
+
         fetchJadwalKemenag();
         setInterval(fetchJadwalKemenag, 3600000);
     </script>
