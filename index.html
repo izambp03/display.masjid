@@ -43,6 +43,21 @@
             background: linear-gradient(135deg, rgba(15, 23, 42, 0.85), rgba(30, 41, 59, 0.85));
         }
 
+        /* Animasi Glow Halus untuk Kotak Saldo Kas */
+        @keyframes kasGlow {
+            0%, 100% {
+                box-shadow: 0 0 12px rgba(234, 179, 8, 0.2);
+                border-color: rgba(234, 179, 8, 0.3);
+            }
+            50% {
+                box-shadow: 0 0 22px rgba(234, 179, 8, 0.5);
+                border-color: rgba(234, 179, 8, 0.7);
+            }
+        }
+        .kas-glow-effect {
+            animation: kasGlow 3s infinite ease-in-out;
+        }
+
         .fade-transition {
             transition: opacity 800ms ease-in-out;
         }
@@ -130,21 +145,21 @@
                 </div>
             </div>
 
-            <!-- Informasi Saldo Kas Masjid -->
-            <div class="bg-slate-950/50 backdrop-blur-md rounded-2xl shadow-xl flex flex-col justify-between overflow-hidden border border-amber-500/30 p-4 sm:p-5">
+            <!-- Informasi Saldo Kas Masjid (Dengan Efek Animasi Glow) -->
+            <div class="bg-slate-950/50 backdrop-blur-md rounded-2xl shadow-xl flex flex-col justify-between overflow-hidden border border-amber-500/30 p-4 sm:p-5 kas-glow-effect">
                 <div class="bg-slate-900/80 px-4 py-2.5 text-center rounded-xl border border-amber-500/30 shadow-sm mb-3">
                     <h3 class="text-sm sm:text-base font-black text-amber-400 uppercase tracking-widest drop-shadow-md">Kas Masjid Al-Khoirot</h3>
                 </div>
                 <div class="grid grid-cols-3 gap-2.5 text-center">
-                    <div class="bg-white/10 p-3 rounded-xl border border-white/10 flex flex-col justify-center">
+                    <div class="bg-white/10 p-3 rounded-xl border border-white/10 flex flex-col justify-center transition-transform hover:scale-105 duration-300">
                         <p class="text-[11px] text-emerald-400 font-bold uppercase tracking-wide">Pemasukan</p>
                         <p id="saldo-masuk" class="text-sm sm:text-base font-black text-white mt-1">Rp 0</p>
                     </div>
-                    <div class="bg-white/10 p-3 rounded-xl border border-white/10 flex flex-col justify-center">
+                    <div class="bg-white/10 p-3 rounded-xl border border-white/10 flex flex-col justify-center transition-transform hover:scale-105 duration-300">
                         <p class="text-[11px] text-rose-400 font-bold uppercase tracking-wide">Pengeluaran</p>
                         <p id="saldo-keluar" class="text-sm sm:text-base font-black text-white mt-1">Rp 0</p>
                     </div>
-                    <div class="bg-amber-500/20 p-3 rounded-xl border border-amber-500/40 flex flex-col justify-center">
+                    <div class="bg-amber-500/20 p-3 rounded-xl border border-amber-500/40 flex flex-col justify-center transition-transform hover:scale-105 duration-300">
                         <p class="text-[11px] text-amber-300 font-bold uppercase tracking-wide">Saldo Akhir</p>
                         <p id="saldo-total" class="text-sm sm:text-base font-black text-amber-400 mt-1">Rp 0</p>
                     </div>
@@ -160,27 +175,27 @@
         <!-- Jadwal Sholat -->
         <section class="bg-slate-950/40 backdrop-blur-md rounded-2xl px-4 sm:px-6 py-3.5 shadow-lg border border-amber-500/30">
             <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2 text-center items-center">
-                <div id="box-subuh" class="py-2 rounded-xl transition-all duration-300 divider-dots">
+                <div id="box-subuh" class="py-2 rounded-xl transition-all duration-500 divider-dots">
                     <p id="title-subuh" class="text-slate-100 font-black uppercase tracking-widest text-xs sm:text-base drop-shadow-md">Subuh</p>
                     <p id="waktu-subuh" class="text-3xl sm:text-5xl font-black mt-1 text-white drop-shadow-lg">--:--</p>
                 </div>
-                <div id="box-syuruq" class="py-2 rounded-xl transition-all duration-300 divider-dots">
+                <div id="box-syuruq" class="py-2 rounded-xl transition-all duration-500 divider-dots">
                     <p id="title-syuruq" class="text-slate-100 font-black uppercase tracking-widest text-xs sm:text-base drop-shadow-md">Syuruq</p>
                     <p id="waktu-syuruq" class="text-3xl sm:text-5xl font-black mt-1 text-white drop-shadow-lg">--:--</p>
                 </div>
-                <div id="box-dzuhur" class="py-2 rounded-xl transition-all duration-300 divider-dots">
+                <div id="box-dzuhur" class="py-2 rounded-xl transition-all duration-500 divider-dots">
                     <p id="title-dzuhur" class="text-slate-100 font-black uppercase tracking-widest text-xs sm:text-base drop-shadow-md">Dzuhur</p>
                     <p id="waktu-dzuhur" class="text-3xl sm:text-5xl font-black mt-1 text-white drop-shadow-lg">--:--</p>
                 </div>
-                <div id="box-ashar" class="py-2 rounded-xl transition-all duration-300 divider-dots">
+                <div id="box-ashar" class="py-2 rounded-xl transition-all duration-500 divider-dots">
                     <p id="title-ashar" class="text-slate-100 font-black uppercase tracking-widest text-xs sm:text-base drop-shadow-md">Ashar</p>
                     <p id="waktu-ashar" class="text-3xl sm:text-5xl font-black mt-1 text-white drop-shadow-lg">--:--</p>
                 </div>
-                <div id="box-maghrib" class="py-2 rounded-xl transition-all duration-300 divider-dots">
+                <div id="box-maghrib" class="py-2 rounded-xl transition-all duration-500 divider-dots">
                     <p id="title-maghrib" class="text-slate-100 font-black uppercase tracking-widest text-xs sm:text-base drop-shadow-md">Maghrib</p>
                     <p id="waktu-maghrib" class="text-3xl sm:text-5xl font-black mt-1 text-white drop-shadow-lg">--:--</p>
                 </div>
-                <div id="box-isya" class="py-2 rounded-xl transition-all duration-300">
+                <div id="box-isya" class="py-2 rounded-xl transition-all duration-500">
                     <p id="title-isya" class="text-slate-100 font-black uppercase tracking-widest text-xs sm:text-base drop-shadow-md">Isya</p>
                     <p id="waktu-isya" class="text-3xl sm:text-5xl font-black mt-1 text-white drop-shadow-lg">--:--</p>
                 </div>
@@ -321,7 +336,7 @@
             }
         }, 10000);
 
-        // 5. Highlight Waktu Sholat Aktif
+        // 5. Highlight Waktu Sholat Aktif dengan Animasi Sorot Dinamis
         function highlightNextPrayer(waktu) {
             if (Object.keys(prayerTimesData).length === 0) return;
             const currentMins = waktu.getHours() * 60 + waktu.getMinutes();
@@ -343,11 +358,11 @@
                 const time = document.getElementById(`waktu-${name}`);
 
                 if (name === nextPrayer) {
-                    box.className = "bg-gradient-to-b from-amber-500 to-yellow-500 py-2 px-2 rounded-xl shadow-2xl transform scale-105 transition-all duration-300 border border-amber-200 z-10 text-slate-950";
+                    box.className = "bg-gradient-to-b from-amber-400 via-amber-500 to-yellow-500 py-2 px-2 rounded-xl shadow-2xl transform scale-105 transition-all duration-500 border-2 border-white z-10 text-slate-950";
                     title.className = "text-slate-950 font-black uppercase tracking-widest text-xs sm:text-base drop-shadow-sm";
                     time.className = "text-3xl sm:text-5xl font-black mt-1 text-slate-950 animate-pulse drop-shadow-md";
                 } else {
-                    box.className = "py-2 rounded-xl transition-all duration-300 divider-dots text-white";
+                    box.className = "py-2 rounded-xl transition-all duration-500 divider-dots text-white hover:bg-white/5";
                     title.className = "text-slate-100 font-black uppercase tracking-widest text-xs sm:text-base drop-shadow-md";
                     time.className = "text-3xl sm:text-5xl font-black mt-1 text-white drop-shadow-lg";
                 }
