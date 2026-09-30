@@ -1,0 +1,66 @@
+{
+    "masjid": {
+        "nama": "Yayasan Masjid Al-Khoirot",
+        "tagline": "Jl. Pucang Anom Timur I No.46, RT.004/RW.02, Kertajaya, Kec. Gubeng, Surabaya, Jawa Timur 60282"
+    },
+    "pengumuman": "** Selamat Datang di Yayasan Masjid Al-Khoirot ** Mohon matikan atau silent Handphone seluler Anda saat berada di dalam masjid ** Mari tingkatkan Infaq dan Shodaqoh untuk pemeliharaan masjid **",
+    "slides": [
+        {
+            "gambar": "1.jpg",
+            "judul": "MAKKAH",
+            "deskripsi": "Semoga kita termasuk tamu Allah SWT."
+        },
+        {
+            "gambar": "2.jpg",
+            "judul": " At-Taubah ayat: 40",
+            "deskripsi": "Janganlah engkau bersedih, sesungguhnya Allah bersama kita."
+        },
+        {
+            "gambar": "3.jpg",
+            "judul": "Alhamdulillah",
+            "deskripsi": "Tetaplah bersyukur dengan semua keaadan yang ada."
+        },
+        {
+            "gambar": "4.jpg",
+            "judul": "PENDIRI NAHDLATUL ULAMA",
+            "deskripsi": "Semoga berokah beliau selalu mengalir kepada kita semua"
+        },
+        {
+            "gambar": "5.jpg",
+            "judul": "SHOLATLAH",
+            "deskripsi": "Shalat adalah tiang agama."
+        },
+        {
+            "gambar": "6.jpg",
+            "judul": "Surat At-Tur Ayat 48.",
+            "deskripsi": "Dan bersabarlah dalam menunggu ketetapan Tuhanmu, maka sesungguhnya kamu berada dalam penglihatan Kami, dan bertasbihlah dengan memuji Tuhanmu ketika kamu bangun berdiri..."
+        }
+    ],
+    "jadwal_khutbah": [
+        {
+            "tanggal": "Jum'at, 2 Oktober 2026",
+            "khotib": "Ust. Ahmad Fauzi",
+            "bilal": "Bpk. H. Abdullah"
+        },
+        {
+            "tanggal": "Jum'at, 9 Oktober 2026",
+            "khotib": "Dr. Muhammad Idris",
+            "bilal": "Sdr. Zaid"
+        },
+        {
+            "tanggal": "Jum'at, 16 Oktober 2026",
+            "khotib": "Ust. Zulkifli Hasan",
+            "bilal": "Bpk. Umar"
+        },
+        {
+            "tanggal": "Jum'at, 23 Oktober 2026",
+            "khotib": "Ust. H. Syamsuddin",
+            "bilal": "Bpk. Hasan"
+        },
+        {
+            "tanggal": "Jum'at, 30 Oktober 2026",
+            "khotib": "Prof. Dr. H. Maksum",
+            "bilal": "Sdr. Farhan"
+        }
+    ]
+}
