@@ -4,6 +4,13 @@
         "tagline": "Jl. Pucang Anom Timur I No.46, RT.004/RW.02, Kertajaya, Kec. Gubeng, Surabaya, Jawa Timur 60282"
     },
     "pengumuman": "** Selamat Datang di Yayasan Masjid Al-Khoirot ** Mohon matikan atau silent Handphone seluler Anda saat berada di dalam masjid ** Mari tingkatkan Infaq dan Shodaqoh untuk pemeliharaan masjid **",
+    
+    "saldo": {
+        "masuk": "Rp 4.500.000",
+        "keluar": "Rp 1.250.000",
+        "total": "Rp 25.750.000"
+    },
+
     "slides": [
         {
             "gambar": "1.jpg",
@@ -12,7 +19,7 @@
         },
         {
             "gambar": "2.jpg",
-            "judul": " At-Taubah ayat: 40",
+            "judul": "At-Taubah ayat: 40",
             "deskripsi": "Janganlah engkau bersedih, sesungguhnya Allah bersama kita."
         },
         {
