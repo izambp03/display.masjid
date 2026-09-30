@@ -81,15 +81,15 @@
         </div>
     </main>
 
-    <!-- AREA JADWAL KHOTIB & BILAL (Diperkecil & Badge Ditengahkan) -->
+    <!-- AREA JADWAL KHOTIB & BILAL (Font Khotib & Bilal Diperbesar Khusus Orangtua/Lansia) -->
     <section class="px-6 pb-2 shrink-0 z-10">
         <div class="flex items-center justify-center mb-2">
             <div class="h-px bg-emerald-700/60 flex-1"></div>
-            <h3 class="px-4 text-[#E5C158] font-bold uppercase tracking-widest text-xs sm:text-sm drop-shadow">Jadwal Khotib & Bilal Bulan Ini</h3>
+            <h3 class="px-4 text-[#E5C158] font-bold uppercase tracking-widest text-sm drop-shadow">Jadwal Khotib & Bilal Bulan Ini</h3>
             <div class="h-px bg-emerald-700/60 flex-1"></div>
         </div>
         
-        <!-- Container 5 Box Khutbah Ringkas -->
+        <!-- Container 5 Box Khutbah -->
         <div id="container-khutbah" class="grid grid-cols-5 gap-3 text-center">
             <!-- Data dari JSON dimuat secara dinamis -->
         </div>
@@ -201,7 +201,6 @@
                     slideData = data.slides;
                     tampilkanSlide(currentSlideIndex);
 
-                    // Gambar Statis Kanan (Mengambil slide pertama atau khusus)
                     if (data.slides_statis) {
                         document.getElementById('static-img').src = data.slides_statis.gambar;
                         document.getElementById('static-judul').textContent = data.slides_statis.judul || '';
@@ -237,23 +236,30 @@
                 containerKhutbah.innerHTML = ''; 
 
                 data.jadwal_khutbah.forEach((jadwal, index) => {
-                    let cardClass = "bg-emerald-800/80 py-1.5 px-2 rounded-xl border border-emerald-600 shadow-md relative flex flex-col justify-center transition-all duration-300";
+                    let cardClass = "bg-emerald-800/90 py-2.5 px-3 rounded-xl border border-emerald-600 shadow-md relative flex flex-col justify-between transition-all duration-300";
                     let badge = "";
 
                     if (index === indexJumatTerdekat) {
                         // Badge Jum'at Ini Tepat di Tengah Atas
-                        cardClass = "bg-emerald-900 border-2 border-[#D4AF37] card-minggu-ini py-1.5 px-2 rounded-xl shadow-lg relative transform scale-102 z-10 flex flex-col justify-center transition-all duration-300";
-                        badge = `<span class="bg-red-600 text-white text-[9px] font-extrabold px-2.5 py-0.5 rounded-full shadow absolute -top-2.5 left-1/2 transform -translate-x-1/2 tracking-wider uppercase animate-bounce whitespace-nowrap">JUM'AT INI</span>`;
+                        cardClass = "bg-emerald-900 border-2 border-[#D4AF37] card-minggu-ini py-2.5 px-3 rounded-xl shadow-lg relative transform scale-102 z-10 flex flex-col justify-between transition-all duration-300";
+                        badge = `<span class="bg-red-600 text-white text-[10px] font-extrabold px-3 py-0.5 rounded-full shadow absolute -top-3 left-1/2 transform -translate-x-1/2 tracking-wider uppercase animate-bounce whitespace-nowrap">JUM'AT INI</span>`;
                     }
 
+                    // Teks Khotib & Bilal Diperbesar (text-base & text-lg / font-extrabold)
                     containerKhutbah.innerHTML += `
                         <div class="${cardClass}">
                             ${badge}
-                            <p class="text-[#E5C158] font-semibold uppercase tracking-wider text-[10px] border-b border-emerald-600/50 pb-0.5 mx-1 mb-1 pt-0.5">${jadwal.tanggal}</p>
-                            <p class="text-[9px] text-emerald-200 uppercase tracking-widest">Khotib</p>
-                            <p class="text-xs sm:text-sm font-bold text-white leading-tight mb-0.5 truncate">${jadwal.khotib}</p>
-                            <p class="text-[9px] text-emerald-200 uppercase tracking-widest">Bilal</p>
-                            <p class="text-xs sm:text-sm font-bold text-[#E5C158] leading-tight truncate">${jadwal.bilal}</p>
+                            <p class="text-[#E5C158] font-extrabold uppercase tracking-wider text-xs sm:text-sm border-b border-emerald-600/60 pb-1 mx-1 mb-1.5 pt-1">${jadwal.tanggal}</p>
+                            
+                            <div class="my-1">
+                                <span class="text-[10px] text-emerald-200 font-bold uppercase tracking-widest bg-emerald-950/60 px-2 py-0.5 rounded-md">Khotib</span>
+                                <p class="text-base sm:text-lg font-extrabold text-white leading-snug mt-1 drop-shadow-sm">${jadwal.khotib}</p>
+                            </div>
+                            
+                            <div class="mt-1">
+                                <span class="text-[10px] text-emerald-200 font-bold uppercase tracking-widest bg-emerald-950/60 px-2 py-0.5 rounded-md">Bilal</span>
+                                <p class="text-base sm:text-lg font-extrabold text-[#E5C158] leading-snug mt-1 drop-shadow-sm">${jadwal.bilal}</p>
+                            </div>
                         </div>`;
                 });
             } catch (error) {
