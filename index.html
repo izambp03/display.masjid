@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Display Masjid Al-Khoirot</title>
-    <!-- Google Fonts untuk Typo Elegan -->
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
@@ -30,11 +30,11 @@
         }
         @keyframes subtleGlow {
             0%, 100% {
-                box-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
+                box-shadow: 0 0 12px rgba(212, 175, 55, 0.4);
                 border-color: #D4AF37;
             }
             50% {
-                box-shadow: 0 0 25px rgba(212, 175, 55, 0.8);
+                box-shadow: 0 0 20px rgba(212, 175, 55, 0.8);
                 border-color: #FFE885;
             }
         }
@@ -45,81 +45,89 @@
 </head>
 <body class="bg-emerald-900 text-white h-screen w-screen flex flex-col justify-between">
 
-    <!-- Header dengan Logo & Font Masjid Elegan -->
-    <header class="bg-emerald-950 flex justify-between items-center px-6 py-4 shadow-lg h-24 border-b-4 border-[#D4AF37] shrink-0 z-20">
-        <div class="flex items-center gap-5">
-            <img src="logo-masjid.png" alt="Logo Takmir Masjid Al-Khoirot" class="w-14 h-14 rounded-full object-contain p-1 shadow-md border-2 border-[#D4AF37] bg-white shrink-0">
+    <!-- Header dengan Logo Masjid -->
+    <header class="bg-emerald-950 flex justify-between items-center px-6 py-3 shadow-lg h-24 border-b-4 border-[#D4AF37] shrink-0 z-20">
+        <div class="flex items-center gap-4">
+            <img id="logo-img" src="logo-masjid.png" onError="this.onerror=null;this.src='https://img.icons8.com/color/96/mosque.png';" alt="Logo Masjid Al-Khoirot" class="w-14 h-14 rounded-full object-contain p-1 shadow-md border-2 border-[#D4AF37] bg-white shrink-0">
             <div>
                 <h1 id="nama-masjid" class="font-serif-elegan text-3xl sm:text-4xl font-bold uppercase tracking-widest text-[#E5C158] drop-shadow-md">Memuat...</h1>
                 <p id="tagline-masjid" class="text-emerald-200 text-base tracking-wide opacity-90">Memuat...</p>
             </div>
         </div>
         <div class="text-right">
-            <!-- Ukuran Jam Diperkecil Sedikit -->
             <h2 id="jam" class="text-4xl sm:text-5xl font-extrabold font-mono text-white tracking-wider drop-shadow-md">00:00:00</h2>
             <p id="tanggal" class="text-sm mt-0.5 text-emerald-200 font-medium">Memuat tanggal...</p>
         </div>
     </header>
 
-    <!-- KONTEN UTAMA: Area Slider (Di Tengah & Diperbesar) -->
-    <main class="flex-1 p-5 flex items-center justify-center min-h-0 z-10">
-        <div class="w-full max-w-7xl h-full bg-black rounded-3xl overflow-hidden relative shadow-[0_10px_30px_rgba(0,0,0,0.5)] border-4 border-emerald-800">
-            <img id="poster-img" src="" alt="Slider" class="w-full h-full object-contain opacity-95 transition-opacity duration-700 bg-emerald-900/20">
-            <div id="poster-overlay" class="absolute bottom-0 left-0 w-full bg-gradient-to-t from-black via-black/80 to-transparent p-6">
-                <h2 id="poster-judul" class="text-2xl sm:text-3xl font-bold text-[#E5C158] drop-shadow-md">Memuat...</h2>
-                <p id="poster-deskripsi" class="text-base sm:text-lg mt-1 text-white line-clamp-2">Memuat...</p>
+    <!-- KONTEN UTAMA: Split 50:50 (Kiri Slider, Kanan Statis) -->
+    <main class="flex-1 p-4 flex gap-4 items-center justify-center min-h-0 z-10">
+        <!-- Sisi Kiri: Slider Gambar Berganti-ganti (50%) -->
+        <div class="w-1/2 h-full bg-black rounded-2xl overflow-hidden relative shadow-xl border-4 border-emerald-800 flex items-center justify-center">
+            <img id="poster-img" src="" alt="Slider" class="w-full h-full object-cover opacity-90 transition-opacity duration-700">
+            <div id="poster-overlay" class="absolute bottom-0 left-0 w-full bg-gradient-to-t from-black via-black/80 to-transparent p-5">
+                <h2 id="poster-judul" class="text-xl sm:text-2xl font-bold text-[#E5C158] drop-shadow-md">Memuat...</h2>
+                <p id="poster-deskripsi" class="text-sm sm:text-base mt-1 text-white line-clamp-2">Memuat...</p>
+            </div>
+        </div>
+
+        <!-- Sisi Kanan: Tampilan Statis / Tetap (50%) -->
+        <div class="w-1/2 h-full bg-black rounded-2xl overflow-hidden relative shadow-xl border-4 border-emerald-800 flex items-center justify-center">
+            <img id="static-img" src="" alt="Informasi Tetap" class="w-full h-full object-cover opacity-90">
+            <div id="static-overlay" class="absolute bottom-0 left-0 w-full bg-gradient-to-t from-black via-black/80 to-transparent p-5">
+                <h2 id="static-judul" class="text-xl sm:text-2xl font-bold text-[#E5C158] drop-shadow-md">YAYASAN MASJID AL-KHOIROT</h2>
+                <p id="static-deskripsi" class="text-sm sm:text-base mt-1 text-white line-clamp-2">Selamat datang di Masjid Al-Khoirot Surabaya.</p>
             </div>
         </div>
     </main>
 
-    <!-- AREA JADWAL KHOTIB & BILAL (Menyamping di atas waktu sholat) -->
-    <section class="px-6 pb-4 shrink-0 z-10">
-        <!-- Garis pembatas judul elegan -->
-        <div class="flex items-center justify-center mb-3">
-            <div class="h-px bg-emerald-700 flex-1"></div>
-            <h3 class="px-4 text-[#E5C158] font-bold uppercase tracking-widest text-sm drop-shadow">Jadwal Khotib & Bilal Bulan Ini</h3>
-            <div class="h-px bg-emerald-700 flex-1"></div>
+    <!-- AREA JADWAL KHOTIB & BILAL (Diperkecil & Badge Ditengahkan) -->
+    <section class="px-6 pb-2 shrink-0 z-10">
+        <div class="flex items-center justify-center mb-2">
+            <div class="h-px bg-emerald-700/60 flex-1"></div>
+            <h3 class="px-4 text-[#E5C158] font-bold uppercase tracking-widest text-xs sm:text-sm drop-shadow">Jadwal Khotib & Bilal Bulan Ini</h3>
+            <div class="h-px bg-emerald-700/60 flex-1"></div>
         </div>
         
-        <!-- Container untuk 5 Kotak Khotib Menyamping -->
-        <div id="container-khutbah" class="grid grid-cols-5 gap-4 text-center">
-            <!-- Data dimasukkan via JS -->
+        <!-- Container 5 Box Khutbah Ringkas -->
+        <div id="container-khutbah" class="grid grid-cols-5 gap-3 text-center">
+            <!-- Data dari JSON dimuat secara dinamis -->
         </div>
     </section>
 
-    <!-- PANEL WAKTU SHOLAT (Menyamping di bawah khotib) -->
-    <section class="bg-emerald-950 px-6 py-4 shadow-[0_-5px_20px_rgba(0,0,0,0.3)] border-t-2 border-emerald-800 shrink-0 z-20">
-        <div class="grid grid-cols-6 gap-4 text-center">
-            <div id="box-subuh" class="bg-emerald-800 py-3 rounded-xl border border-emerald-600 shadow-md transition-all duration-300">
-                <p id="title-subuh" class="text-[#E5C158] font-semibold uppercase tracking-wider text-sm">Subuh</p>
-                <p id="waktu-subuh" class="text-4xl font-bold mt-1 text-white">--:--</p>
+    <!-- PANEL WAKTU SHOLAT -->
+    <section class="bg-emerald-950 px-6 py-3 shadow-[0_-5px_20px_rgba(0,0,0,0.3)] border-t-2 border-emerald-800 shrink-0 z-20">
+        <div class="grid grid-cols-6 gap-3 text-center">
+            <div id="box-subuh" class="bg-emerald-800 py-2.5 rounded-xl border border-emerald-600 shadow-md transition-all duration-300">
+                <p id="title-subuh" class="text-[#E5C158] font-semibold uppercase tracking-wider text-xs">Subuh</p>
+                <p id="waktu-subuh" class="text-3xl sm:text-4xl font-bold mt-0.5 text-white">--:--</p>
             </div>
-            <div id="box-syuruq" class="bg-emerald-800 py-3 rounded-xl border border-emerald-600 shadow-md transition-all duration-300">
-                <p id="title-syuruq" class="text-[#E5C158] font-semibold uppercase tracking-wider text-sm">Syuruq</p>
-                <p id="waktu-syuruq" class="text-4xl font-bold mt-1 text-white">--:--</p>
+            <div id="box-syuruq" class="bg-emerald-800 py-2.5 rounded-xl border border-emerald-600 shadow-md transition-all duration-300">
+                <p id="title-syuruq" class="text-[#E5C158] font-semibold uppercase tracking-wider text-xs">Syuruq</p>
+                <p id="waktu-syuruq" class="text-3xl sm:text-4xl font-bold mt-0.5 text-white">--:--</p>
             </div>
-            <div id="box-dzuhur" class="bg-emerald-800 py-3 rounded-xl border border-emerald-600 shadow-md transition-all duration-300">
-                <p id="title-dzuhur" class="text-[#E5C158] font-semibold uppercase tracking-wider text-sm">Dzuhur</p>
-                <p id="waktu-dzuhur" class="text-4xl font-bold mt-1 text-white">--:--</p>
+            <div id="box-dzuhur" class="bg-emerald-800 py-2.5 rounded-xl border border-emerald-600 shadow-md transition-all duration-300">
+                <p id="title-dzuhur" class="text-[#E5C158] font-semibold uppercase tracking-wider text-xs">Dzuhur</p>
+                <p id="waktu-dzuhur" class="text-3xl sm:text-4xl font-bold mt-0.5 text-white">--:--</p>
             </div>
-            <div id="box-ashar" class="bg-emerald-800 py-3 rounded-xl border border-emerald-600 shadow-md transition-all duration-300">
-                <p id="title-ashar" class="text-[#E5C158] font-semibold uppercase tracking-wider text-sm">Ashar</p>
-                <p id="waktu-ashar" class="text-4xl font-bold mt-1 text-white">--:--</p>
+            <div id="box-ashar" class="bg-emerald-800 py-2.5 rounded-xl border border-emerald-600 shadow-md transition-all duration-300">
+                <p id="title-ashar" class="text-[#E5C158] font-semibold uppercase tracking-wider text-xs">Ashar</p>
+                <p id="waktu-ashar" class="text-3xl sm:text-4xl font-bold mt-0.5 text-white">--:--</p>
             </div>
-            <div id="box-maghrib" class="bg-emerald-800 py-3 rounded-xl border border-emerald-600 shadow-md transition-all duration-300">
-                <p id="title-maghrib" class="text-[#E5C158] font-semibold uppercase tracking-wider text-sm">Maghrib</p>
-                <p id="waktu-maghrib" class="text-4xl font-bold mt-1 text-white">--:--</p>
+            <div id="box-maghrib" class="bg-emerald-800 py-2.5 rounded-xl border border-emerald-600 shadow-md transition-all duration-300">
+                <p id="title-maghrib" class="text-[#E5C158] font-semibold uppercase tracking-wider text-xs">Maghrib</p>
+                <p id="waktu-maghrib" class="text-3xl sm:text-4xl font-bold mt-0.5 text-white">--:--</p>
             </div>
-            <div id="box-isya" class="bg-emerald-800 py-3 rounded-xl border border-emerald-600 shadow-md transition-all duration-300">
-                <p id="title-isya" class="text-[#E5C158] font-semibold uppercase tracking-wider text-sm">Isya</p>
-                <p id="waktu-isya" class="text-4xl font-bold mt-1 text-white">--:--</p>
+            <div id="box-isya" class="bg-emerald-800 py-2.5 rounded-xl border border-emerald-600 shadow-md transition-all duration-300">
+                <p id="title-isya" class="text-[#E5C158] font-semibold uppercase tracking-wider text-xs">Isya</p>
+                <p id="waktu-isya" class="text-3xl sm:text-4xl font-bold mt-0.5 text-white">--:--</p>
             </div>
         </div>
     </section>
 
-    <!-- Footer Running Text -->
-    <footer class="bg-black text-white h-14 flex items-center overflow-hidden text-xl border-t border-emerald-900 shrink-0 z-30">
-        <div class="bg-[#D4AF37] text-black font-extrabold px-6 h-full flex items-center z-10 shadow-lg tracking-wider text-lg shrink-0">
+    <!-- FOOTER RUNNING TEXT -->
+    <footer class="bg-black text-white h-12 flex items-center overflow-hidden text-lg border-t border-emerald-900 shrink-0 z-30">
+        <div class="bg-[#D4AF37] text-black font-extrabold px-6 h-full flex items-center z-10 shadow-lg tracking-wider text-base shrink-0">
             INFORMASI
         </div>
         <div class="flex-1 overflow-hidden relative h-full flex items-center bg-gray-900">
@@ -148,7 +156,7 @@
         setInterval(updateWaktu, 1000);
         updateWaktu();
 
-        // Tampilkan Slide
+        // Tampilkan Slide Kiri
         function tampilkanSlide(index) {
             if (slideData.length === 0) return;
             const slide = slideData[index];
@@ -192,6 +200,19 @@
                 if (data.slides && data.slides.length > 0) {
                     slideData = data.slides;
                     tampilkanSlide(currentSlideIndex);
+
+                    // Gambar Statis Kanan (Mengambil slide pertama atau khusus)
+                    if (data.slides_statis) {
+                        document.getElementById('static-img').src = data.slides_statis.gambar;
+                        document.getElementById('static-judul').textContent = data.slides_statis.judul || '';
+                        document.getElementById('static-deskripsi').textContent = data.slides_statis.deskripsi || '';
+                    } else if (data.slides.length > 1) {
+                        document.getElementById('static-img').src = data.slides[1].gambar;
+                        document.getElementById('static-judul').textContent = data.slides[1].judul || '';
+                        document.getElementById('static-deskripsi').textContent = data.slides[1].deskripsi || '';
+                    } else {
+                        document.getElementById('static-img').src = data.slides[0].gambar;
+                    }
                 }
 
                 const hariIni = new Date();
@@ -207,35 +228,32 @@
                 }
 
                 const containerKhutbah = document.getElementById('container-khutbah');
-                
-                // Jika jadwal ada 4, ubah grid jadi 4 agar rata tengah, jika 5 jadi 5.
                 if (data.jadwal_khutbah.length === 4) {
-                    containerKhutbah.className = "grid grid-cols-4 gap-4 text-center";
+                    containerKhutbah.className = "grid grid-cols-4 gap-3 text-center";
                 } else {
-                    containerKhutbah.className = "grid grid-cols-5 gap-4 text-center";
+                    containerKhutbah.className = "grid grid-cols-5 gap-3 text-center";
                 }
 
                 containerKhutbah.innerHTML = ''; 
 
                 data.jadwal_khutbah.forEach((jadwal, index) => {
-                    let cardClass = "bg-emerald-800/80 py-2.5 px-3 rounded-xl border border-emerald-600 shadow-md relative flex flex-col justify-center transition-all duration-300";
+                    let cardClass = "bg-emerald-800/80 py-1.5 px-2 rounded-xl border border-emerald-600 shadow-md relative flex flex-col justify-center transition-all duration-300";
                     let badge = "";
 
                     if (index === indexJumatTerdekat) {
-                        // Kotak MINGGU INI (Glow & Bounce)
-                        cardClass = "bg-emerald-900 border-2 border-[#D4AF37] card-minggu-ini py-2.5 px-3 rounded-xl shadow-lg relative transform scale-105 z-10 flex flex-col justify-center transition-all duration-300";
-                        badge = `<span class="bg-red-600 text-white text-[10px] font-extrabold px-3 py-1 rounded-full shadow absolute -top-3 left-1/2 transform -translate-x-1/2 tracking-wider uppercase animate-bounce whitespace-nowrap">JUM'AT INI</span>`;
+                        // Badge Jum'at Ini Tepat di Tengah Atas
+                        cardClass = "bg-emerald-900 border-2 border-[#D4AF37] card-minggu-ini py-1.5 px-2 rounded-xl shadow-lg relative transform scale-102 z-10 flex flex-col justify-center transition-all duration-300";
+                        badge = `<span class="bg-red-600 text-white text-[9px] font-extrabold px-2.5 py-0.5 rounded-full shadow absolute -top-2.5 left-1/2 transform -translate-x-1/2 tracking-wider uppercase animate-bounce whitespace-nowrap">JUM'AT INI</span>`;
                     }
 
-                    // Teks Khotib diperbesar agar selaras dengan Bilal
                     containerKhutbah.innerHTML += `
                         <div class="${cardClass}">
                             ${badge}
-                            <p class="text-[#E5C158] font-semibold uppercase tracking-wider text-[11px] border-b border-emerald-600/50 pb-1.5 mx-2 mb-1.5 pt-1">${jadwal.tanggal}</p>
-                            <p class="text-[10px] text-emerald-200 uppercase tracking-widest mt-1">Khotib</p>
-                            <p class="text-base sm:text-lg font-bold text-white leading-tight mb-1 truncate">${jadwal.khotib}</p>
-                            <p class="text-[10px] text-emerald-200 uppercase tracking-widest">Bilal</p>
-                            <p class="text-base sm:text-lg font-bold text-[#E5C158] leading-tight truncate">${jadwal.bilal}</p>
+                            <p class="text-[#E5C158] font-semibold uppercase tracking-wider text-[10px] border-b border-emerald-600/50 pb-0.5 mx-1 mb-1 pt-0.5">${jadwal.tanggal}</p>
+                            <p class="text-[9px] text-emerald-200 uppercase tracking-widest">Khotib</p>
+                            <p class="text-xs sm:text-sm font-bold text-white leading-tight mb-0.5 truncate">${jadwal.khotib}</p>
+                            <p class="text-[9px] text-emerald-200 uppercase tracking-widest">Bilal</p>
+                            <p class="text-xs sm:text-sm font-bold text-[#E5C158] leading-tight truncate">${jadwal.bilal}</p>
                         </div>`;
                 });
             } catch (error) {
@@ -275,13 +293,13 @@
                 const time = document.getElementById(`waktu-${name}`);
 
                 if (name === nextPrayer) {
-                    box.className = "bg-[#D4AF37] py-3 rounded-xl border-2 border-yellow-200 shadow-[0_0_15px_rgba(212,175,55,0.8)] transform scale-105 transition-all duration-300";
-                    title.className = "text-emerald-950 font-extrabold uppercase tracking-wider text-sm";
-                    time.className = "text-4xl font-extrabold mt-1 text-emerald-950 animate-pulse";
+                    box.className = "bg-[#D4AF37] py-2.5 rounded-xl border-2 border-yellow-200 shadow-[0_0_15px_rgba(212,175,55,0.8)] transform scale-105 transition-all duration-300";
+                    title.className = "text-emerald-950 font-extrabold uppercase tracking-wider text-xs";
+                    time.className = "text-3xl sm:text-4xl font-extrabold mt-0.5 text-emerald-950 animate-pulse";
                 } else {
-                    box.className = "bg-emerald-800 py-3 rounded-xl border border-emerald-600 shadow-md transition-all duration-300";
-                    title.className = "text-[#E5C158] font-semibold uppercase tracking-wider text-sm";
-                    time.className = "text-4xl font-bold mt-1 text-white";
+                    box.className = "bg-emerald-800 py-2.5 rounded-xl border border-emerald-600 shadow-md transition-all duration-300";
+                    title.className = "text-[#E5C158] font-semibold uppercase tracking-wider text-xs";
+                    time.className = "text-3xl sm:text-4xl font-bold mt-0.5 text-white";
                 }
             });
         }
