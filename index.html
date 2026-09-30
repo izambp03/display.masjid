@@ -7,7 +7,7 @@
     <!-- Google Fonts untuk Jam Digital & Typo Elegan -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;800;900&family=Plus+Jakarta+Sans:wght@500;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Plus+Jakarta+Sans:wght@500;700;800;900&display=swap" rel="stylesheet">
     
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
@@ -16,7 +16,7 @@
             overflow: hidden; 
         }
         .font-jam {
-            font-family: 'Orbitron', monospace;
+            font-family: 'Share Tech Mono', monospace;
         }
         .running-text {
             display: inline-block;
@@ -29,14 +29,14 @@
             100% { transform: translate(-100%, 0); }
         }
         
-        /* Animasi Glow Emas Tebal untuk Card Jum'at Ini */
+        /* Animasi Glow Emas untuk Card Jum'at Ini */
         @keyframes jumatGlowThick {
             0%, 100% {
-                box-shadow: 0 0 15px rgba(212, 175, 55, 0.7), inset 0 0 10px rgba(212, 175, 55, 0.3);
+                box-shadow: 0 0 12px rgba(212, 175, 55, 0.6), inset 0 0 8px rgba(212, 175, 55, 0.3);
                 border-color: #FFE885;
             }
             50% {
-                box-shadow: 0 0 30px rgba(255, 223, 0, 1), inset 0 0 20px rgba(255, 223, 0, 0.5);
+                box-shadow: 0 0 25px rgba(255, 223, 0, 0.9), inset 0 0 15px rgba(255, 223, 0, 0.4);
                 border-color: #FFFFFF;
             }
         }
@@ -62,86 +62,86 @@
 </head>
 <body class="bg-islamic-pattern text-white h-screen w-screen flex flex-col justify-between select-none">
 
-    <!-- HEADER: Teks Masjid & Alamat Diperbesar dengan Efek Glow -->
-    <header class="bg-emerald-950/90 backdrop-blur-md flex justify-between items-center px-8 py-4 shadow-2xl h-32 border-b-4 border-[#D4AF37] shrink-0 z-20">
-        <div class="flex items-center gap-6">
+    <!-- HEADER: Nama Masjid & Jam Digital (Share Tech Mono) -->
+    <header class="bg-emerald-950/90 backdrop-blur-md flex justify-between items-center px-8 py-3 shadow-2xl h-28 border-b-4 border-[#D4AF37] shrink-0 z-20">
+        <div class="flex items-center gap-5">
             <img id="logo-img" src="logo.jpeg" 
                  onError="this.onerror=null; this.src='logo-masjid.png'; if(!this.src) this.src='https://img.icons8.com/color/96/mosque.png';" 
                  alt="Logo Masjid Al-Khoirot" 
-                 class="w-20 h-20 rounded-full object-contain p-1 shadow-xl border-2 border-[#D4AF37] bg-white shrink-0">
+                 class="w-16 h-16 rounded-full object-contain p-1 shadow-xl border-2 border-[#D4AF37] bg-white shrink-0">
             <div>
-                <h1 id="nama-masjid" class="text-4xl sm:text-5xl font-black uppercase tracking-widest text-[#E5C158] gold-glow-text">Memuat...</h1>
-                <p id="tagline-masjid" class="text-white text-lg sm:text-xl font-medium tracking-wide mt-1 opacity-95">Memuat...</p>
+                <h1 id="nama-masjid" class="text-3xl sm:text-4xl font-black uppercase tracking-widest text-[#E5C158] gold-glow-text">Memuat...</h1>
+                <p id="tagline-masjid" class="text-white text-base sm:text-lg font-medium tracking-wide mt-0.5 opacity-95">Memuat...</p>
             </div>
         </div>
         <div class="text-right">
-            <!-- Font Jam Digital Baru (Orbitron) & Tanggal Putih Bersih -->
-            <h2 id="jam" class="font-jam text-5xl sm:text-6xl font-black text-white tracking-wider drop-shadow-lg">00:00:00</h2>
-            <p id="tanggal" class="text-lg sm:text-xl mt-1 text-white font-bold tracking-wide">Memuat tanggal...</p>
+            <!-- Font Jam Digital Baru (Share Tech Mono) -->
+            <h2 id="jam" class="font-jam text-5xl sm:text-6xl font-bold text-white tracking-widest drop-shadow-lg">00:00:00</h2>
+            <p id="tanggal" class="text-base sm:text-lg mt-0.5 text-white font-bold tracking-wide">Memuat tanggal...</p>
         </div>
     </header>
 
     <!-- KONTEN UTAMA: Split 50:50 -->
-    <main class="flex-1 flex gap-6 p-6 h-full overflow-hidden z-10">
+    <main class="flex-1 flex gap-5 p-5 h-full overflow-hidden z-10">
         <!-- Area Slider Gambar (Kiri - 50%) -->
-        <div class="w-6/12 h-full bg-black/80 rounded-3xl overflow-hidden relative shadow-2xl border-4 border-emerald-700/80 flex items-center justify-center">
+        <div class="w-6/12 h-full bg-black/80 rounded-2xl overflow-hidden relative shadow-2xl border-4 border-emerald-700/80 flex items-center justify-center">
             <img id="poster-img" src="" alt="Slider" class="w-full h-full object-cover opacity-100 fade-transition">
-            <div id="poster-overlay" class="absolute bottom-0 left-0 w-full bg-gradient-to-t from-black via-black/80 to-transparent p-6 fade-transition">
+            <div id="poster-overlay" class="absolute bottom-0 left-0 w-full bg-gradient-to-t from-black via-black/80 to-transparent p-5 fade-transition">
                 <h2 id="poster-judul" class="text-2xl sm:text-3xl font-bold text-[#E5C158] drop-shadow-md">Memuat...</h2>
-                <p id="poster-deskripsi" class="text-lg sm:text-xl mt-2 text-white">Memuat...</p>
+                <p id="poster-deskripsi" class="text-lg sm:text-xl mt-1.5 text-white">Memuat...</p>
             </div>
         </div>
 
-        <!-- Area Jadwal Khotib & Bilal (Kanan - 50% Font Besar Khusus Orang Tua) -->
-        <div class="w-6/12 h-full bg-emerald-950/70 backdrop-blur-sm rounded-3xl shadow-2xl flex flex-col overflow-hidden border-2 border-emerald-600/80 p-6">
-            <div class="bg-emerald-950 p-3.5 text-center border-b-2 border-[#D4AF37] rounded-2xl mb-4 shrink-0 shadow-lg">
-                <h3 class="text-2xl sm:text-3xl font-black text-[#E5C158] uppercase tracking-widest gold-glow-text">Jadwal Khotib & Bilal Bulan Ini</h3>
+        <!-- Area Jadwal Khotib & Bilal (Kanan - 50% Ukuran Box Diperkecil Pas & Rapi) -->
+        <div class="w-6/12 h-full bg-emerald-950/70 backdrop-blur-sm rounded-2xl shadow-2xl flex flex-col overflow-hidden border-2 border-emerald-600/80 p-5">
+            <div class="bg-emerald-950 p-2.5 text-center border-b-2 border-[#D4AF37] rounded-xl mb-3 shrink-0 shadow-lg">
+                <h3 class="text-xl sm:text-2xl font-black text-[#E5C158] uppercase tracking-widest gold-glow-text">Jadwal Khotib & Bilal Bulan Ini</h3>
             </div>
             
             <!-- Container Grid Terisi Penuh Fleksibel -->
-            <div id="container-khutbah" class="flex-1 grid grid-cols-2 gap-4 h-full">
+            <div id="container-khutbah" class="flex-1 grid grid-cols-2 gap-3 h-full">
                 <!-- Data dari JSON dimuat secara dinamis -->
             </div>
         </div>
     </main>
 
-    <!-- PANEL WAKTU SHOLAT: Teks & Angka Diperbesar Sangat Jelas untuk Orang Tua -->
-    <section class="bg-emerald-950/95 backdrop-blur-md p-5 shadow-2xl border-t-4 border-emerald-700 z-20 shrink-0">
-        <div class="grid grid-cols-6 gap-5 text-center">
-            <div id="box-subuh" class="bg-emerald-900/80 py-3.5 rounded-2xl border-2 border-emerald-700 shadow-lg transition-all duration-300">
-                <p id="title-subuh" class="text-[#E5C158] font-black uppercase tracking-widest text-base sm:text-lg">Subuh</p>
-                <p id="waktu-subuh" class="text-4xl sm:text-5xl font-black mt-1 text-white">--:--</p>
+    <!-- PANEL WAKTU SHOLAT -->
+    <section class="bg-emerald-950/95 backdrop-blur-md px-5 py-3 shadow-2xl border-t-4 border-emerald-700 z-20 shrink-0">
+        <div class="grid grid-cols-6 gap-4 text-center">
+            <div id="box-subuh" class="bg-emerald-900/80 py-2.5 rounded-xl border-2 border-emerald-700 shadow-lg transition-all duration-300">
+                <p id="title-subuh" class="text-[#E5C158] font-black uppercase tracking-widest text-sm">Subuh</p>
+                <p id="waktu-subuh" class="text-3xl sm:text-4xl font-black mt-0.5 text-white">--:--</p>
             </div>
-            <div id="box-syuruq" class="bg-emerald-900/80 py-3.5 rounded-2xl border-2 border-emerald-700 shadow-lg transition-all duration-300">
-                <p id="title-syuruq" class="text-[#E5C158] font-black uppercase tracking-widest text-base sm:text-lg">Syuruq</p>
-                <p id="waktu-syuruq" class="text-4xl sm:text-5xl font-black mt-1 text-white">--:--</p>
+            <div id="box-syuruq" class="bg-emerald-900/80 py-2.5 rounded-xl border-2 border-emerald-700 shadow-lg transition-all duration-300">
+                <p id="title-syuruq" class="text-[#E5C158] font-black uppercase tracking-widest text-sm">Syuruq</p>
+                <p id="waktu-syuruq" class="text-3xl sm:text-4xl font-black mt-0.5 text-white">--:--</p>
             </div>
-            <div id="box-dzuhur" class="bg-emerald-900/80 py-3.5 rounded-2xl border-2 border-emerald-700 shadow-lg transition-all duration-300">
-                <p id="title-dzuhur" class="text-[#E5C158] font-black uppercase tracking-widest text-base sm:text-lg">Dzuhur</p>
-                <p id="waktu-dzuhur" class="text-4xl sm:text-5xl font-black mt-1 text-white">--:--</p>
+            <div id="box-dzuhur" class="bg-emerald-900/80 py-2.5 rounded-xl border-2 border-emerald-700 shadow-lg transition-all duration-300">
+                <p id="title-dzuhur" class="text-[#E5C158] font-black uppercase tracking-widest text-sm">Dzuhur</p>
+                <p id="waktu-dzuhur" class="text-3xl sm:text-4xl font-black mt-0.5 text-white">--:--</p>
             </div>
-            <div id="box-ashar" class="bg-emerald-900/80 py-3.5 rounded-2xl border-2 border-emerald-700 shadow-lg transition-all duration-300">
-                <p id="title-ashar" class="text-[#E5C158] font-black uppercase tracking-widest text-base sm:text-lg">Ashar</p>
-                <p id="waktu-ashar" class="text-4xl sm:text-5xl font-black mt-1 text-white">--:--</p>
+            <div id="box-ashar" class="bg-emerald-900/80 py-2.5 rounded-xl border-2 border-emerald-700 shadow-lg transition-all duration-300">
+                <p id="title-ashar" class="text-[#E5C158] font-black uppercase tracking-widest text-sm">Ashar</p>
+                <p id="waktu-ashar" class="text-3xl sm:text-4xl font-black mt-0.5 text-white">--:--</p>
             </div>
-            <div id="box-maghrib" class="bg-emerald-900/80 py-3.5 rounded-2xl border-2 border-emerald-700 shadow-lg transition-all duration-300">
-                <p id="title-maghrib" class="text-[#E5C158] font-black uppercase tracking-widest text-base sm:text-lg">Maghrib</p>
-                <p id="waktu-maghrib" class="text-4xl sm:text-5xl font-black mt-1 text-white">--:--</p>
+            <div id="box-maghrib" class="bg-emerald-900/80 py-2.5 rounded-xl border-2 border-emerald-700 shadow-lg transition-all duration-300">
+                <p id="title-maghrib" class="text-[#E5C158] font-black uppercase tracking-widest text-sm">Maghrib</p>
+                <p id="waktu-maghrib" class="text-3xl sm:text-4xl font-black mt-0.5 text-white">--:--</p>
             </div>
-            <div id="box-isya" class="bg-emerald-900/80 py-3.5 rounded-2xl border-2 border-emerald-700 shadow-lg transition-all duration-300">
-                <p id="title-isya" class="text-[#E5C158] font-black uppercase tracking-widest text-base sm:text-lg">Isya</p>
-                <p id="waktu-isya" class="text-4xl sm:text-5xl font-black mt-1 text-white">--:--</p>
+            <div id="box-isya" class="bg-emerald-900/80 py-2.5 rounded-xl border-2 border-emerald-700 shadow-lg transition-all duration-300">
+                <p id="title-isya" class="text-[#E5C158] font-black uppercase tracking-widest text-sm">Isya</p>
+                <p id="waktu-isya" class="text-3xl sm:text-4xl font-black mt-0.5 text-white">--:--</p>
             </div>
         </div>
     </section>
 
     <!-- FOOTER RUNNING TEXT -->
-    <footer class="bg-black text-white h-16 flex items-center overflow-hidden text-2xl border-t-2 border-emerald-900 z-30 shrink-0">
-        <div class="bg-[#D4AF37] text-black font-black px-8 h-full flex items-center z-10 shadow-2xl tracking-widest text-xl shrink-0">
+    <footer class="bg-black text-white h-14 flex items-center overflow-hidden text-xl border-t-2 border-emerald-900 z-30 shrink-0">
+        <div class="bg-[#D4AF37] text-black font-black px-6 h-full flex items-center z-10 shadow-2xl tracking-widest text-lg shrink-0">
             INFORMASI
         </div>
         <div class="flex-1 overflow-hidden relative h-full flex items-center bg-gray-950">
-            <div id="running-text" class="running-text text-[#E5C158] font-bold tracking-wide text-2xl">
+            <div id="running-text" class="running-text text-[#E5C158] font-bold tracking-wide text-xl">
                 Memuat informasi...
             </div>
         </div>
@@ -207,7 +207,7 @@
             return new Date(0);
         }
 
-        // 2. Load data.json & Render Jadwal Khutbah Font Besar
+        // 2. Load data.json & Render Box Khutbah Ringkas & Pas
         async function loadDataJSON() {
             try {
                 const response = await fetch('data.json?t=' + new Date().getTime());
@@ -249,24 +249,24 @@
                     }
 
                     if (index === indexJumatTerdekat) {
-                        cardStyle = "bg-emerald-900 border-4 card-jumat-ini shadow-2xl";
-                        badge = `<span class="bg-red-600 text-white text-xs font-black px-3 py-1 rounded-full shadow-lg float-right uppercase tracking-widest animate-bounce">JUM'AT INI</span>`;
+                        cardStyle = "bg-emerald-900 border-2 card-jumat-ini shadow-xl";
+                        badge = `<span class="bg-red-600 text-white text-[10px] font-black px-2.5 py-0.5 rounded-full shadow-md float-right uppercase tracking-wider animate-bounce">JUM'AT INI</span>`;
                     }
 
-                    // Teks Hari, Tanggal, Khotib & Bilal Diperbesar Khusus Lansia/Orang Tua
+                    // Teks Khotib & Bilal Pas, Jelas, Rapi
                     containerKhutbah.innerHTML += `
-                        <div class="${cardStyle} ${extraCol} p-4 rounded-2xl border shadow-xl flex flex-col justify-between">
+                        <div class="${cardStyle} ${extraCol} p-3 rounded-xl border shadow-lg flex flex-col justify-between">
                             <div>
                                 ${badge}
-                                <p class="text-sm sm:text-base text-[#E5C158] font-extrabold uppercase tracking-wider mb-1">${jadwal.tanggal}</p>
+                                <p class="text-xs sm:text-sm text-[#E5C158] font-extrabold uppercase tracking-wider mb-0.5">${jadwal.tanggal}</p>
                             </div>
-                            <div class="my-1">
-                                <p class="text-xs sm:text-sm font-bold text-emerald-200 uppercase tracking-widest">Khotib:</p>
-                                <p class="text-lg sm:text-xl font-black text-white leading-snug drop-shadow-sm">${jadwal.khotib}</p>
+                            <div class="my-0.5">
+                                <p class="text-[10px] font-bold text-emerald-200 uppercase tracking-widest">Khotib:</p>
+                                <p class="text-sm sm:text-base font-black text-white leading-tight drop-shadow-sm">${jadwal.khotib}</p>
                             </div>
-                            <div class="mt-1">
-                                <p class="text-xs sm:text-sm font-bold text-emerald-200 uppercase tracking-widest">Bilal:</p>
-                                <p class="text-lg sm:text-xl font-black text-[#E5C158] leading-snug drop-shadow-sm">${jadwal.bilal}</p>
+                            <div class="mt-0.5">
+                                <p class="text-[10px] font-bold text-emerald-200 uppercase tracking-widest">Bilal:</p>
+                                <p class="text-sm sm:text-base font-black text-[#E5C158] leading-tight drop-shadow-sm">${jadwal.bilal}</p>
                             </div>
                         </div>`;
                 });
@@ -285,7 +285,7 @@
             }
         }, 7000);
 
-        // Highlight Waktu Sholat dengan Animasi Berpijar Modern
+        // Highlight Waktu Sholat
         function highlightNextPrayer(waktu) {
             if (Object.keys(prayerTimesData).length === 0) return;
             const currentMins = waktu.getHours() * 60 + waktu.getMinutes();
@@ -307,13 +307,13 @@
                 const time = document.getElementById(`waktu-${name}`);
 
                 if (name === nextPrayer) {
-                    box.className = "bg-gradient-to-b from-[#FFE885] to-[#D4AF37] py-3.5 rounded-2xl border-4 border-white shadow-[0_0_25px_rgba(212,175,55,1)] transform scale-105 transition-all duration-300";
-                    title.className = "text-emerald-950 font-black uppercase tracking-widest text-base sm:text-lg";
-                    time.className = "text-4xl sm:text-5xl font-black mt-1 text-emerald-950 animate-pulse";
+                    box.className = "bg-gradient-to-b from-[#FFE885] to-[#D4AF37] py-2.5 rounded-xl border-4 border-white shadow-[0_0_25px_rgba(212,175,55,1)] transform scale-105 transition-all duration-300";
+                    title.className = "text-emerald-950 font-black uppercase tracking-widest text-sm";
+                    time.className = "text-3xl sm:text-4xl font-black mt-0.5 text-emerald-950 animate-pulse";
                 } else {
-                    box.className = "bg-emerald-900/80 py-3.5 rounded-2xl border-2 border-emerald-700 shadow-lg transition-all duration-300";
-                    title.className = "text-[#E5C158] font-black uppercase tracking-widest text-base sm:text-lg";
-                    time.className = "text-4xl sm:text-5xl font-black mt-1 text-white";
+                    box.className = "bg-emerald-900/80 py-2.5 rounded-xl border-2 border-emerald-700 shadow-lg transition-all duration-300";
+                    title.className = "text-[#E5C158] font-black uppercase tracking-widest text-sm";
+                    time.className = "text-3xl sm:text-4xl font-black mt-0.5 text-white";
                 }
             });
         }
