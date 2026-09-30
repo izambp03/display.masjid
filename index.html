@@ -16,16 +16,28 @@
             0%   { transform: translate(0, 0); }
             100% { transform: translate(-100%, 0); }
         }
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .animate-fade-in {
+            animation: fadeInUp 0.5s ease-out forwards;
+        }
         body { overflow: hidden; }
     </style>
 </head>
 <body class="bg-emerald-900 text-white h-screen w-screen flex flex-col font-sans">
 
-    <!-- Header dengan Logo Masjid Resmi -->
+    <!-- Header dengan Logo Masjid -->
     <header class="bg-emerald-950 flex justify-between items-center p-5 shadow-lg h-28 border-b-4 border-[#D4AF37]">
         <div class="flex items-center gap-5">
-            <!-- Logo Gambar Masjid Al-Khoirot -->
-            <img src="logo.jpeg" alt="Logo Takmir Masjid Al-Khoirot" class="w-16 h-16 rounded-full object-contain p-1 shadow-md border-2 border-[#D4AF37] bg-white shrink-0">
+            <img src="logo-masjid.png" alt="Logo Takmir Masjid Al-Khoirot" class="w-16 h-16 rounded-full object-contain p-1 shadow-md border-2 border-[#D4AF37] bg-white shrink-0">
             <div>
                 <h1 id="nama-masjid" class="text-4xl font-bold uppercase tracking-widest text-[#E5C158] drop-shadow">Memuat...</h1>
                 <p id="tagline-masjid" class="text-emerald-200 text-xl tracking-wide">Memuat...</p>
@@ -39,7 +51,7 @@
 
     <!-- Konten Utama (Seimbang 50:50) -->
     <main class="flex-1 flex gap-5 p-5 h-full overflow-hidden">
-        <!-- Area Slider Gambar (Kiri - Lebar 6/12 / 50%) -->
+        <!-- Area Slider Gambar (Kiri - 50%) -->
         <div class="w-6/12 bg-black rounded-2xl overflow-hidden relative shadow-2xl border-4 border-emerald-800 flex items-center justify-center">
             <img id="poster-img" src="" alt="Slider" class="w-full h-full object-cover opacity-85 transition-opacity duration-700">
             <div id="poster-overlay" class="absolute bottom-0 left-0 w-full bg-gradient-to-t from-black via-black/70 to-transparent p-6">
@@ -48,15 +60,15 @@
             </div>
         </div>
 
-        <!-- Area Jadwal Khotib & Bilal (Kanan - Lebar 6/12 / 50%) -->
-        <div class="w-6/12 bg-emerald-800 rounded-2xl shadow-2xl flex flex-col overflow-hidden border-2 border-emerald-700 p-5">
-            <div class="bg-emerald-950 p-3 text-center border-b-2 border-[#D4AF37] rounded-xl mb-3">
-                <h3 class="text-2xl font-bold text-[#E5C158] uppercase tracking-widest">Jadwal Khotib & Bilal Bulan Ini</h3>
+        <!-- Area Jadwal Khotib & Bilal (Kanan - 50% Rapi & Terstruktur) -->
+        <div class="w-6/12 bg-emerald-800/90 rounded-2xl shadow-2xl flex flex-col overflow-hidden border-2 border-emerald-700 p-5">
+            <div class="bg-emerald-950 p-3 text-center border-b-2 border-[#D4AF37] rounded-xl mb-4 shadow-md">
+                <h3 class="text-2xl font-bold text-[#E5C158] uppercase tracking-widest drop-shadow">Jadwal Khotib & Bilal Bulan Ini</h3>
             </div>
             
-            <!-- Container Grid Menyamping -->
-            <div id="container-khutbah" class="flex-1 grid grid-cols-2 gap-3 content-start">
-                <!-- Data dari JSON akan masuk ke sini secara dinamis -->
+            <!-- Container Jadwal Dinamis (1 Utama di Atas + 4 Grid di Bawah) -->
+            <div id="container-khutbah" class="flex-1 flex flex-col gap-3 overflow-hidden">
+                <!-- Data dari JSON akan dimasukkan secara rapi oleh JS -->
             </div>
         </div>
     </main>
@@ -122,7 +134,7 @@
         setInterval(updateWaktu, 1000);
         updateWaktu();
 
-        // Merender slide di area kiri (Sembunyikan overlay jika judul & deskripsi kosong)
+        // Tampilkan Slide
         function tampilkanSlide(index) {
             if (slideData.length === 0) return;
             const slide = slideData[index];
@@ -141,7 +153,6 @@
             }
         }
 
-        // Fungsi pembantu konversi string tanggal "Jum'at, 2 Oktober 2026" ke Objek Date
         function parseTanggalIndo(str) {
             const bulanIndo = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'];
             const parts = str.replace(/,/g, '').split(' ');
@@ -172,7 +183,7 @@
                 // Cari indeks Jum'at terdekat
                 const hariIni = new Date();
                 hariIni.setHours(0, 0, 0, 0);
-                let indexJumatTerdekat = -1;
+                let indexJumatTerdekat = 0;
 
                 for (let i = 0; i < data.jadwal_khutbah.length; i++) {
                     let tanggalJumat = parseTanggalIndo(data.jadwal_khutbah[i].tanggal);
@@ -185,25 +196,40 @@
                 const containerKhutbah = document.getElementById('container-khutbah');
                 containerKhutbah.innerHTML = ''; 
 
-                data.jadwal_khutbah.forEach((jadwal, index) => {
-                    let cardStyle = "bg-emerald-900/90 border-emerald-700/60";
-                    let badge = "";
+                const jumatTerdekat = data.jadwal_khutbah[indexJumatTerdekat];
+                const sisaJadwal = data.jadwal_khutbah.filter((_, idx) => idx !== indexJumatTerdekat);
 
-                    if (index === indexJumatTerdekat) {
-                        cardStyle = "bg-emerald-900 border-[#D4AF37] border-2 shadow-[0_0_15px_rgba(212,175,55,0.5)] transform scale-[1.02]";
-                        badge = `<span class="bg-red-600 text-white text-[10px] font-bold px-2 py-0.5 rounded-full shadow float-right uppercase tracking-wider">MINGGU INI</span>`;
-                    }
-
-                    containerKhutbah.innerHTML += `
-                        <div class="${cardStyle} p-3 rounded-xl border shadow flex flex-col justify-between">
-                            <div>
-                                ${badge}
-                                <p class="text-xs text-[#E5C158] font-bold mb-0.5">${jadwal.tanggal}</p>
+                // Kartu Utama (Jum'at Ini - Memanjang di Atas)
+                let htmlUtama = `
+                    <div class="bg-gradient-to-r from-emerald-900 via-emerald-800 to-emerald-900 border-2 border-[#D4AF37] shadow-[0_0_20px_rgba(212,175,55,0.4)] p-4 rounded-xl flex justify-between items-center relative animate-fade-in shrink-0">
+                        <div class="flex-1">
+                            <div class="flex items-center gap-2 mb-1">
+                                <span class="bg-red-600 text-white text-xs font-extrabold px-2.5 py-0.5 rounded-full shadow tracking-wider animate-pulse">JUM'AT INI</span>
+                                <p class="text-sm text-[#E5C158] font-bold">${jumatTerdekat.tanggal}</p>
                             </div>
-                            <p class="text-sm font-medium text-emerald-100">Khotib: <span class="font-bold text-white">${jadwal.khotib}</span></p>
-                            <p class="text-base font-bold text-emerald-100 mt-1">Bilal: <span class="text-[#E5C158]">${jadwal.bilal}</span></p>
+                            <div class="grid grid-cols-2 gap-2 mt-2">
+                                <p class="text-base text-emerald-100">Khotib: <span class="font-bold text-white text-lg block sm:inline">${jumatTerdekat.khotib}</span></p>
+                                <p class="text-base text-emerald-100">Bilal: <span class="font-bold text-[#E5C158] text-lg block sm:inline">${jumatTerdekat.bilal}</span></p>
+                            </div>
+                        </div>
+                    </div>`;
+
+                // Grid 4 Kartu Lainnya di Bawahnya (2x2)
+                let htmlGrid = `<div class="flex-1 grid grid-cols-2 gap-3 content-start overflow-hidden pt-1">`;
+                sisaJadwal.forEach((jadwal) => {
+                    htmlGrid += `
+                        <div class="bg-emerald-900/90 p-3 rounded-xl border border-emerald-700/60 shadow-md flex flex-col justify-between hover:border-[#D4AF37] transition-all duration-300 animate-fade-in">
+                            <div>
+                                <p class="text-xs text-[#E5C158] font-bold mb-1">${jadwal.tanggal}</p>
+                            </div>
+                            <p class="text-xs font-medium text-emerald-100">Khotib: <span class="font-bold text-white block text-sm">${jadwal.khotib}</span></p>
+                            <p class="text-xs font-bold text-emerald-100 mt-1">Bilal: <span class="text-[#E5C158] block text-sm">${jadwal.bilal}</span></p>
                         </div>`;
                 });
+                htmlGrid += `</div>`;
+
+                containerKhutbah.innerHTML = htmlUtama + htmlGrid;
+
             } catch (error) {
                 console.error("Gagal memuat JSON:", error);
             }
@@ -211,7 +237,7 @@
         loadDataJSON();
         setInterval(loadDataJSON, 60000); 
 
-        // 3. Slider Otomatis (7 Detik)
+        // Slider Otomatis (7 Detik)
         setInterval(() => {
             if (slideData.length > 0) {
                 currentSlideIndex = (currentSlideIndex + 1) % slideData.length;
@@ -219,7 +245,7 @@
             }
         }, 7000);
 
-        // Fungsi Highlight Waktu Sholat Selanjutnya
+        // Highlight Waktu Sholat Selanjutnya
         function highlightNextPrayer(waktu) {
             if (Object.keys(prayerTimesData).length === 0) return;
             const currentMins = waktu.getHours() * 60 + waktu.getMinutes();
@@ -252,7 +278,7 @@
             });
         }
 
-        // 4. API Kemenag RI v1 (Sama persis dengan Tirto.id - Kota Surabaya ID: 1601)
+        // API Kemenag RI v1 (Tirto.id Kota Surabaya)
         async function fetchJadwalKemenag() {
             try {
                 const today = new Date();
