@@ -251,22 +251,21 @@
             });
         }
 
-        // 4. API Bimas Islam Kemenag RI (Kota Surabaya - Kode: 1301)
-        async function fetchJadwalSholat() {
+        // 4. API Kemenag RI v1 (Sama persis dengan Tirto.id - Kota Surabaya ID: 1601)
+        async function fetchJadwalKemenag() {
             try {
                 const today = new Date();
                 const tahun = today.getFullYear();
                 const bulan = String(today.getMonth() + 1).padStart(2, '0');
                 const tanggal = String(today.getDate()).padStart(2, '0');
-
-                // Mengambil Data Tabel Bimas Islam Kemenag RI untuk Kota Surabaya (1301)
-                const url = `https://api.myquran.com/v2/sholat/jadwal/1301/${tahun}/${bulan}/${tanggal}`;
+                
+                const url = `https://api.myquran.com/v1/sholat/jadwal/1601/${tahun}/${bulan}/${tanggal}`;
                 const response = await fetch(url);
                 const result = await response.json();
 
                 if (result.status && result.data && result.data.jadwal) {
                     const j = result.data.jadwal;
-
+                    
                     prayerTimesData = { 
                         subuh: j.subuh, 
                         syuruq: j.terbit, 
@@ -285,15 +284,36 @@
 
                     highlightNextPrayer(new Date());
                 } else {
-                    throw new Error("Gagal parsing data Kemenag");
+                    fetchJadwalFallback(tahun, bulan, tanggal);
                 }
             } catch (error) {
-                console.error("Gagal mengambil API Kemenag Bimas Islam:", error);
+                console.error("Gagal mengambil API Tirto/Kemenag:", error);
             }
         }
 
-        fetchJadwalSholat();
-        setInterval(fetchJadwalSholat, 3600000); // Sinkronkan ulang setiap 1 jam
+        async function fetchJadwalFallback(tahun, bulan, tanggal) {
+            try {
+                const url = `https://api.myquran.com/v2/sholat/jadwal/1601/${tahun}/${bulan}/${tanggal}`;
+                const response = await fetch(url);
+                const result = await response.json();
+                if (result.status && result.data && result.data.jadwal) {
+                    const j = result.data.jadwal;
+                    prayerTimesData = { subuh: j.subuh, syuruq: j.terbit, dzuhur: j.dzuhur, ashar: j.ashar, maghrib: j.maghrib, isya: j.isya };
+                    document.getElementById('waktu-subuh').textContent = j.subuh;
+                    document.getElementById('waktu-syuruq').textContent = j.terbit; 
+                    document.getElementById('waktu-dzuhur').textContent = j.dzuhur;
+                    document.getElementById('waktu-ashar').textContent = j.ashar;
+                    document.getElementById('waktu-maghrib').textContent = j.maghrib;
+                    document.getElementById('waktu-isya').textContent = j.isya;
+                    highlightNextPrayer(new Date());
+                }
+            } catch (e) {
+                console.error("Fallback error:", e);
+            }
+        }
+
+        fetchJadwalKemenag();
+        setInterval(fetchJadwalKemenag, 3600000);
     </script>
 </body>
 </html>
