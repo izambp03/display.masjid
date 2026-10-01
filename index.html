@@ -40,7 +40,7 @@
         }
         .card-jumat-ini {
             animation: jumatGlowGold 2s infinite ease-in-out;
-            background: linear-gradient(135deg, rgba(15, 23, 42, 0.85), rgba(30, 41, 59, 0.85));
+            background: linear-gradient(135deg, rgba(6, 78, 59, 0.85), rgba(2, 44, 34, 0.85));
         }
 
         /* Animasi Glow Halus untuk Kotak Saldo Kas */
@@ -62,10 +62,13 @@
             transition: opacity 800ms ease-in-out;
         }
 
-        /* Latar Belakang Mandala */
-        .bg-custom-mandala {
-            background-color: #0d1b2a;
-            background-image: url('background.jpg');
+        /* Latar Belakang Hijau Islami Mewah Berbasis CSS (Anti Pecah & Tajam Sempurna) */
+        .bg-islamic-green {
+            background-color: #022c22;
+            background-image: 
+                radial-gradient(circle at 15% 20%, rgba(16, 185, 129, 0.15) 0%, transparent 40%),
+                radial-gradient(circle at 85% 80%, rgba(234, 179, 8, 0.12) 0%, transparent 40%),
+                linear-gradient(135deg, #022c22 0%, #064e3b 50%, #022c22 100%);
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
@@ -88,10 +91,10 @@
         }
     </style>
 </head>
-<body class="bg-custom-mandala text-white min-h-screen lg:h-screen w-screen flex flex-col justify-between p-3 sm:p-5 select-none overflow-y-auto lg:overflow-hidden gap-3">
+<body class="bg-islamic-green text-white min-h-screen lg:h-screen w-screen flex flex-col justify-between p-3 sm:p-5 select-none overflow-y-auto lg:overflow-hidden gap-3">
 
     <!-- BARIS ATAS: Header -->
-    <header class="bg-slate-950/40 backdrop-blur-md rounded-2xl flex flex-col sm:flex-row justify-between items-center px-6 sm:px-8 py-3.5 shadow-lg border border-amber-500/30 shrink-0 z-20 gap-3 sm:gap-0">
+    <header class="bg-emerald-950/50 backdrop-blur-md rounded-2xl flex flex-col sm:flex-row justify-between items-center px-6 sm:px-8 py-3.5 shadow-xl border border-amber-500/40 shrink-0 z-20 gap-3 sm:gap-0">
         <!-- Logo Bulat Sempurna & Nama Masjid -->
         <div class="flex items-center gap-4 text-center sm:text-left">
             <img id="logo-img" src="logo.jpeg" 
@@ -100,7 +103,7 @@
                  class="w-16 h-16 sm:w-18 sm:h-18 rounded-full object-cover p-0.5 shadow-md border-2 border-amber-400 bg-white/95 shrink-0">
             <div>
                 <h1 id="nama-masjid" class="text-2xl sm:text-4xl font-black uppercase tracking-tight text-amber-300 drop-shadow-md leading-tight">Memuat...</h1>
-                <p id="tagline-masjid" class="text-slate-100 text-sm sm:text-base font-bold tracking-wide drop-shadow-md max-w-xl">Memuat...</p>
+                <p id="tagline-masjid" class="text-emerald-100 text-sm sm:text-base font-bold tracking-wide drop-shadow-md max-w-xl">Memuat...</p>
             </div>
         </div>
 
@@ -115,11 +118,11 @@
     <main class="flex-1 flex flex-col lg:flex-row gap-4 min-h-0 overflow-visible lg:overflow-hidden z-10">
         
         <!-- Area Slider Gambar (65%) -->
-        <div class="w-full lg:w-[65%] h-64 sm:h-80 lg:h-full rounded-2xl overflow-hidden relative shadow-2xl border border-amber-500/30 shrink-0 lg:shrink">
+        <div class="w-full lg:w-[65%] h-64 sm:h-80 lg:h-full rounded-2xl overflow-hidden relative shadow-2xl border border-amber-500/40 shrink-0 lg:shrink">
             <img id="poster-img" src="" alt="Slider" class="w-full h-full object-cover opacity-100 fade-transition bg-black/50">
-            <div id="poster-overlay" class="absolute bottom-0 left-0 w-full bg-gradient-to-t from-slate-950/95 via-slate-950/60 to-transparent p-6 sm:p-8 fade-transition">
+            <div id="poster-overlay" class="absolute bottom-0 left-0 w-full bg-gradient-to-t from-emerald-950/95 via-emerald-950/70 to-transparent p-6 sm:p-8 fade-transition">
                 <h2 id="poster-judul" class="text-2xl sm:text-4xl font-extrabold text-amber-400 drop-shadow-md">Memuat...</h2>
-                <p id="poster-deskripsi" class="text-base sm:text-xl mt-2 text-slate-100 line-clamp-2 font-medium">Memuat...</p>
+                <p id="poster-deskripsi" class="text-base sm:text-xl mt-2 text-emerald-100 line-clamp-2 font-medium">Memuat...</p>
             </div>
         </div>
 
@@ -127,36 +130,36 @@
         <div class="w-full lg:w-[35%] min-h-[22rem] lg:h-full flex flex-col gap-4 shrink-0 lg:shrink">
             
             <!-- Jadwal Khotib Terdekat -->
-            <div class="flex-1 bg-slate-950/50 backdrop-blur-md rounded-2xl shadow-xl flex flex-col justify-between overflow-hidden border border-amber-500/30 p-4 sm:p-5">
-                <div class="bg-slate-900/80 px-4 py-2.5 text-center rounded-xl border border-amber-500/30 shadow-sm mb-2">
+            <div class="flex-1 bg-emerald-950/60 backdrop-blur-md rounded-2xl shadow-xl flex flex-col justify-between overflow-hidden border border-amber-500/40 p-4 sm:p-5">
+                <div class="bg-emerald-900/80 px-4 py-2.5 text-center rounded-xl border border-amber-500/40 shadow-sm mb-2">
                     <h3 class="text-sm sm:text-base font-black text-amber-400 uppercase tracking-widest drop-shadow-md">Jadwal Khotib & Bilal</h3>
                 </div>
-                <div id="khotib-terdekat" class="flex-1 flex flex-col justify-center items-center text-center p-3 rounded-xl card-jumat-ini border border-amber-400/50">
+                <div id="khotib-terdekat" class="flex-1 flex flex-col justify-center items-center text-center p-3 rounded-xl card-jumat-ini border border-amber-400/60">
                     <span class="bg-amber-500 text-slate-950 text-xs font-black px-3 py-1 rounded-full shadow-md uppercase tracking-wider mb-2 animate-bounce">JUM'AT INI</span>
                     <p id="k-tanggal" class="text-sm sm:text-base text-amber-300 font-extrabold uppercase tracking-wider mb-2">Memuat...</p>
                     <div class="w-full my-1">
-                        <p class="text-xs font-bold text-slate-300 uppercase tracking-widest">Khotib:</p>
+                        <p class="text-xs font-bold text-emerald-200 uppercase tracking-widest">Khotib:</p>
                         <p id="k-khotib" class="text-lg sm:text-xl font-black text-white leading-snug drop-shadow-md">Memuat...</p>
                     </div>
                     <div class="w-full mt-2">
-                        <p class="text-xs font-bold text-slate-300 uppercase tracking-widest">Bilal:</p>
+                        <p class="text-xs font-bold text-emerald-200 uppercase tracking-widest">Bilal:</p>
                         <p id="k-bilal" class="text-lg sm:text-xl font-black text-amber-300 leading-snug drop-shadow-md">Memuat...</p>
                     </div>
                 </div>
             </div>
 
-            <!-- Informasi Saldo Kas Masjid (Dengan Efek Animasi Glow) -->
-            <div class="bg-slate-950/50 backdrop-blur-md rounded-2xl shadow-xl flex flex-col justify-between overflow-hidden border border-amber-500/30 p-4 sm:p-5 kas-glow-effect">
-                <div class="bg-slate-900/80 px-4 py-2.5 text-center rounded-xl border border-amber-500/30 shadow-sm mb-3">
+            <!-- Informasi Saldo Kas Masjid -->
+            <div class="bg-emerald-950/60 backdrop-blur-md rounded-2xl shadow-xl flex flex-col justify-between overflow-hidden border border-amber-500/40 p-4 sm:p-5 kas-glow-effect">
+                <div class="bg-emerald-900/80 px-4 py-2.5 text-center rounded-xl border border-amber-500/40 shadow-sm mb-3">
                     <h3 class="text-sm sm:text-base font-black text-amber-400 uppercase tracking-widest drop-shadow-md">Kas Masjid Al-Khoirot</h3>
                 </div>
                 <div class="grid grid-cols-3 gap-2.5 text-center">
-                    <div class="bg-white/10 p-3 rounded-xl border border-white/10 flex flex-col justify-center transition-transform hover:scale-105 duration-300">
-                        <p class="text-[11px] text-emerald-400 font-bold uppercase tracking-wide">Pemasukan</p>
+                    <div class="bg-emerald-900/40 p-3 rounded-xl border border-emerald-500/30 flex flex-col justify-center transition-transform hover:scale-105 duration-300">
+                        <p class="text-[11px] text-emerald-300 font-bold uppercase tracking-wide">Pemasukan</p>
                         <p id="saldo-masuk" class="text-sm sm:text-base font-black text-white mt-1">Rp 0</p>
                     </div>
-                    <div class="bg-white/10 p-3 rounded-xl border border-white/10 flex flex-col justify-center transition-transform hover:scale-105 duration-300">
-                        <p class="text-[11px] text-rose-400 font-bold uppercase tracking-wide">Pengeluaran</p>
+                    <div class="bg-emerald-900/40 p-3 rounded-xl border border-emerald-500/30 flex flex-col justify-center transition-transform hover:scale-105 duration-300">
+                        <p class="text-[11px] text-rose-300 font-bold uppercase tracking-wide">Pengeluaran</p>
                         <p id="saldo-keluar" class="text-sm sm:text-base font-black text-white mt-1">Rp 0</p>
                     </div>
                     <div class="bg-amber-500/20 p-3 rounded-xl border border-amber-500/40 flex flex-col justify-center transition-transform hover:scale-105 duration-300">
@@ -173,37 +176,37 @@
     <div class="flex flex-col gap-3 shrink-0 z-20">
         
         <!-- Jadwal Sholat -->
-        <section class="bg-slate-950/40 backdrop-blur-md rounded-2xl px-4 sm:px-6 py-3.5 shadow-lg border border-amber-500/30">
+        <section class="bg-emerald-950/50 backdrop-blur-md rounded-2xl px-4 sm:px-6 py-3.5 shadow-xl border border-amber-500/40">
             <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2 text-center items-center">
                 <div id="box-subuh" class="py-2 rounded-xl transition-all duration-500 divider-dots">
-                    <p id="title-subuh" class="text-slate-100 font-black uppercase tracking-widest text-xs sm:text-base drop-shadow-md">Subuh</p>
+                    <p id="title-subuh" class="text-emerald-100 font-black uppercase tracking-widest text-xs sm:text-base drop-shadow-md">Subuh</p>
                     <p id="waktu-subuh" class="text-3xl sm:text-5xl font-black mt-1 text-white drop-shadow-lg">--:--</p>
                 </div>
                 <div id="box-syuruq" class="py-2 rounded-xl transition-all duration-500 divider-dots">
-                    <p id="title-syuruq" class="text-slate-100 font-black uppercase tracking-widest text-xs sm:text-base drop-shadow-md">Syuruq</p>
+                    <p id="title-syuruq" class="text-emerald-100 font-black uppercase tracking-widest text-xs sm:text-base drop-shadow-md">Syuruq</p>
                     <p id="waktu-syuruq" class="text-3xl sm:text-5xl font-black mt-1 text-white drop-shadow-lg">--:--</p>
                 </div>
                 <div id="box-dzuhur" class="py-2 rounded-xl transition-all duration-500 divider-dots">
-                    <p id="title-dzuhur" class="text-slate-100 font-black uppercase tracking-widest text-xs sm:text-base drop-shadow-md">Dzuhur</p>
+                    <p id="title-dzuhur" class="text-emerald-100 font-black uppercase tracking-widest text-xs sm:text-base drop-shadow-md">Dzuhur</p>
                     <p id="waktu-dzuhur" class="text-3xl sm:text-5xl font-black mt-1 text-white drop-shadow-lg">--:--</p>
                 </div>
                 <div id="box-ashar" class="py-2 rounded-xl transition-all duration-500 divider-dots">
-                    <p id="title-ashar" class="text-slate-100 font-black uppercase tracking-widest text-xs sm:text-base drop-shadow-md">Ashar</p>
+                    <p id="title-ashar" class="text-emerald-100 font-black uppercase tracking-widest text-xs sm:text-base drop-shadow-md">Ashar</p>
                     <p id="waktu-ashar" class="text-3xl sm:text-5xl font-black mt-1 text-white drop-shadow-lg">--:--</p>
                 </div>
                 <div id="box-maghrib" class="py-2 rounded-xl transition-all duration-500 divider-dots">
-                    <p id="title-maghrib" class="text-slate-100 font-black uppercase tracking-widest text-xs sm:text-base drop-shadow-md">Maghrib</p>
+                    <p id="title-maghrib" class="text-emerald-100 font-black uppercase tracking-widest text-xs sm:text-base drop-shadow-md">Maghrib</p>
                     <p id="waktu-maghrib" class="text-3xl sm:text-5xl font-black mt-1 text-white drop-shadow-lg">--:--</p>
                 </div>
                 <div id="box-isya" class="py-2 rounded-xl transition-all duration-500">
-                    <p id="title-isya" class="text-slate-100 font-black uppercase tracking-widest text-xs sm:text-base drop-shadow-md">Isya</p>
+                    <p id="title-isya" class="text-emerald-100 font-black uppercase tracking-widest text-xs sm:text-base drop-shadow-md">Isya</p>
                     <p id="waktu-isya" class="text-3xl sm:text-5xl font-black mt-1 text-white drop-shadow-lg">--:--</p>
                 </div>
             </div>
         </section>
 
         <!-- Running Text -->
-        <footer class="bg-slate-950/60 backdrop-blur-md rounded-2xl h-12 sm:h-14 flex items-center overflow-hidden border border-amber-500/30 shadow-lg">
+        <footer class="bg-emerald-950/70 backdrop-blur-md rounded-2xl h-12 sm:h-14 flex items-center overflow-hidden border border-amber-500/40 shadow-xl">
             <div class="bg-amber-500 text-slate-950 font-black px-4 sm:px-6 h-full flex items-center z-10 shadow-md tracking-widest text-xs sm:text-base uppercase">
                 INFORMASI
             </div>
@@ -363,7 +366,7 @@
                     time.className = "text-3xl sm:text-5xl font-black mt-1 text-slate-950 animate-pulse drop-shadow-md";
                 } else {
                     box.className = "py-2 rounded-xl transition-all duration-500 divider-dots text-white hover:bg-white/5";
-                    title.className = "text-slate-100 font-black uppercase tracking-widest text-xs sm:text-base drop-shadow-md";
+                    title.className = "text-emerald-100 font-black uppercase tracking-widest text-xs sm:text-base drop-shadow-md";
                     time.className = "text-3xl sm:text-5xl font-black mt-1 text-white drop-shadow-lg";
                 }
             });
