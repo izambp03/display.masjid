@@ -40,18 +40,18 @@
         }
         .card-jumat-ini {
             animation: jumatGlowGold 2s infinite ease-in-out;
-            background: linear-gradient(135deg, rgba(6, 78, 59, 0.85), rgba(2, 44, 34, 0.85));
+            background: linear-gradient(135deg, rgba(6, 78, 59, 0.9), rgba(2, 44, 34, 0.9));
         }
 
         /* Animasi Glow Halus untuk Kotak Saldo Kas */
         @keyframes kasGlow {
             0%, 100% {
-                box-shadow: 0 0 12px rgba(234, 179, 8, 0.2);
-                border-color: rgba(234, 179, 8, 0.3);
+                box-shadow: 0 0 12px rgba(234, 179, 8, 0.25);
+                border-color: rgba(234, 179, 8, 0.35);
             }
             50% {
-                box-shadow: 0 0 22px rgba(234, 179, 8, 0.5);
-                border-color: rgba(234, 179, 8, 0.7);
+                box-shadow: 0 0 25px rgba(234, 179, 8, 0.6);
+                border-color: rgba(234, 179, 8, 0.8);
             }
         }
         .kas-glow-effect {
@@ -62,16 +62,22 @@
             transition: opacity 800ms ease-in-out;
         }
 
-        /* Latar Belakang Hijau Islami Mewah Berbasis CSS (Anti Pecah & Tajam Sempurna) */
-        .bg-islamic-green {
+        /* LATAR BELAKANG ISLAMI VECTOR HD (Anti Pecah + Estetik & Elegan) */
+        .bg-islamic-pro {
             background-color: #022c22;
+            /* Kombinasi Pola Vektor Arabesque + Radial Ambient Glow */
             background-image: 
-                radial-gradient(circle at 15% 20%, rgba(16, 185, 129, 0.15) 0%, transparent 40%),
-                radial-gradient(circle at 85% 80%, rgba(234, 179, 8, 0.12) 0%, transparent 40%),
-                linear-gradient(135deg, #022c22 0%, #064e3b 50%, #022c22 100%);
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
+                radial-gradient(circle at 50% 0%, rgba(234, 179, 8, 0.18) 0%, transparent 50%),
+                radial-gradient(circle at 10% 90%, rgba(16, 185, 129, 0.2) 0%, transparent 45%),
+                radial-gradient(circle at 90% 90%, rgba(234, 179, 8, 0.15) 0%, transparent 45%),
+                url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23eab308' fill-opacity='0.05' fill-rule='evenodd'%3E%3Cpath d='M0 0h80v80H0V0zm40 40M10 10l20 20M10 30L30 10m20 0l20 20M50 30l20-20M10 50l20 20m-20 0l20-20m20 0l20 20m-20 0l20-20'/%3E%3Cpath d='M40 0l40 40-40 40L0 40z' fill='none' stroke='%23eab308' stroke-opacity='0.06' stroke-width='1'/%3E%3Ccircle cx='40' cy='40' r='12' fill='none' stroke='%23eab308' stroke-opacity='0.08' stroke-width='1.5'/%3E%3C/g%3E%3C/svg%3E"),
+                linear-gradient(135deg, #012018 0%, #064e3b 50%, #022c22 100%);
+            background-attachment: fixed;
+        }
+
+        /* Ornamen Garis Emas Khas Arsitektur Masjid */
+        .gold-border-glow {
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37), inset 0 0 0 1px rgba(234, 179, 8, 0.25);
         }
 
         /* Pembatas Titik Sholat */
@@ -91,10 +97,10 @@
         }
     </style>
 </head>
-<body class="bg-islamic-green text-white min-h-screen lg:h-screen w-screen flex flex-col justify-between p-3 sm:p-5 select-none overflow-y-auto lg:overflow-hidden gap-3">
+<body class="bg-islamic-pro text-white min-h-screen lg:h-screen w-screen flex flex-col justify-between p-3 sm:p-5 select-none overflow-y-auto lg:overflow-hidden gap-3">
 
     <!-- BARIS ATAS: Header -->
-    <header class="bg-emerald-950/50 backdrop-blur-md rounded-2xl flex flex-col sm:flex-row justify-between items-center px-6 sm:px-8 py-3.5 shadow-xl border border-amber-500/40 shrink-0 z-20 gap-3 sm:gap-0">
+    <header class="bg-emerald-950/60 backdrop-blur-md rounded-2xl flex flex-col sm:flex-row justify-between items-center px-6 sm:px-8 py-3.5 gold-border-glow border border-amber-500/40 shrink-0 z-20 gap-3 sm:gap-0">
         <!-- Logo Bulat Sempurna & Nama Masjid -->
         <div class="flex items-center gap-4 text-center sm:text-left">
             <img id="logo-img" src="logo.jpeg" 
@@ -118,9 +124,9 @@
     <main class="flex-1 flex flex-col lg:flex-row gap-4 min-h-0 overflow-visible lg:overflow-hidden z-10">
         
         <!-- Area Slider Gambar (65%) -->
-        <div class="w-full lg:w-[65%] h-64 sm:h-80 lg:h-full rounded-2xl overflow-hidden relative shadow-2xl border border-amber-500/40 shrink-0 lg:shrink">
+        <div class="w-full lg:w-[65%] h-64 sm:h-80 lg:h-full rounded-2xl overflow-hidden relative shadow-2xl gold-border-glow border border-amber-500/40 shrink-0 lg:shrink">
             <img id="poster-img" src="" alt="Slider" class="w-full h-full object-cover opacity-100 fade-transition bg-black/50">
-            <div id="poster-overlay" class="absolute bottom-0 left-0 w-full bg-gradient-to-t from-emerald-950/95 via-emerald-950/70 to-transparent p-6 sm:p-8 fade-transition">
+            <div id="poster-overlay" class="absolute bottom-0 left-0 w-full bg-gradient-to-t from-emerald-955/95 via-emerald-950/75 to-transparent p-6 sm:p-8 fade-transition">
                 <h2 id="poster-judul" class="text-2xl sm:text-4xl font-extrabold text-amber-400 drop-shadow-md">Memuat...</h2>
                 <p id="poster-deskripsi" class="text-base sm:text-xl mt-2 text-emerald-100 line-clamp-2 font-medium">Memuat...</p>
             </div>
@@ -130,7 +136,7 @@
         <div class="w-full lg:w-[35%] min-h-[22rem] lg:h-full flex flex-col gap-4 shrink-0 lg:shrink">
             
             <!-- Jadwal Khotib Terdekat -->
-            <div class="flex-1 bg-emerald-950/60 backdrop-blur-md rounded-2xl shadow-xl flex flex-col justify-between overflow-hidden border border-amber-500/40 p-4 sm:p-5">
+            <div class="flex-1 bg-emerald-950/70 backdrop-blur-md rounded-2xl shadow-xl flex flex-col justify-between overflow-hidden gold-border-glow border border-amber-500/40 p-4 sm:p-5">
                 <div class="bg-emerald-900/80 px-4 py-2.5 text-center rounded-xl border border-amber-500/40 shadow-sm mb-2">
                     <h3 class="text-sm sm:text-base font-black text-amber-400 uppercase tracking-widest drop-shadow-md">Jadwal Khotib & Bilal</h3>
                 </div>
@@ -148,21 +154,21 @@
                 </div>
             </div>
 
-            <!-- Informasi Saldo Kas Masjid -->
-            <div class="bg-emerald-950/60 backdrop-blur-md rounded-2xl shadow-xl flex flex-col justify-between overflow-hidden border border-amber-500/40 p-4 sm:p-5 kas-glow-effect">
+            <!-- Informasi Saldo Kas Masjid (Dengan Efek Glow Emas Estetis) -->
+            <div class="bg-emerald-950/70 backdrop-blur-md rounded-2xl shadow-xl flex flex-col justify-between overflow-hidden gold-border-glow border border-amber-500/40 p-4 sm:p-5 kas-glow-effect">
                 <div class="bg-emerald-900/80 px-4 py-2.5 text-center rounded-xl border border-amber-500/40 shadow-sm mb-3">
                     <h3 class="text-sm sm:text-base font-black text-amber-400 uppercase tracking-widest drop-shadow-md">Kas Masjid Al-Khoirot</h3>
                 </div>
                 <div class="grid grid-cols-3 gap-2.5 text-center">
-                    <div class="bg-emerald-900/40 p-3 rounded-xl border border-emerald-500/30 flex flex-col justify-center transition-transform hover:scale-105 duration-300">
+                    <div class="bg-emerald-900/50 p-3 rounded-xl border border-emerald-500/40 flex flex-col justify-center transition-all hover:scale-105 duration-300 shadow-md">
                         <p class="text-[11px] text-emerald-300 font-bold uppercase tracking-wide">Pemasukan</p>
                         <p id="saldo-masuk" class="text-sm sm:text-base font-black text-white mt-1">Rp 0</p>
                     </div>
-                    <div class="bg-emerald-900/40 p-3 rounded-xl border border-emerald-500/30 flex flex-col justify-center transition-transform hover:scale-105 duration-300">
+                    <div class="bg-emerald-900/50 p-3 rounded-xl border border-emerald-500/40 flex flex-col justify-center transition-all hover:scale-105 duration-300 shadow-md">
                         <p class="text-[11px] text-rose-300 font-bold uppercase tracking-wide">Pengeluaran</p>
                         <p id="saldo-keluar" class="text-sm sm:text-base font-black text-white mt-1">Rp 0</p>
                     </div>
-                    <div class="bg-amber-500/20 p-3 rounded-xl border border-amber-500/40 flex flex-col justify-center transition-transform hover:scale-105 duration-300">
+                    <div class="bg-amber-500/20 p-3 rounded-xl border border-amber-500/50 flex flex-col justify-center transition-all hover:scale-105 duration-300 shadow-md">
                         <p class="text-[11px] text-amber-300 font-bold uppercase tracking-wide">Saldo Akhir</p>
                         <p id="saldo-total" class="text-sm sm:text-base font-black text-amber-400 mt-1">Rp 0</p>
                     </div>
@@ -176,7 +182,7 @@
     <div class="flex flex-col gap-3 shrink-0 z-20">
         
         <!-- Jadwal Sholat -->
-        <section class="bg-emerald-950/50 backdrop-blur-md rounded-2xl px-4 sm:px-6 py-3.5 shadow-xl border border-amber-500/40">
+        <section class="bg-emerald-950/60 backdrop-blur-md rounded-2xl px-4 sm:px-6 py-3.5 shadow-xl gold-border-glow border border-amber-500/40">
             <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2 text-center items-center">
                 <div id="box-subuh" class="py-2 rounded-xl transition-all duration-500 divider-dots">
                     <p id="title-subuh" class="text-emerald-100 font-black uppercase tracking-widest text-xs sm:text-base drop-shadow-md">Subuh</p>
@@ -206,7 +212,7 @@
         </section>
 
         <!-- Running Text -->
-        <footer class="bg-emerald-950/70 backdrop-blur-md rounded-2xl h-12 sm:h-14 flex items-center overflow-hidden border border-amber-500/40 shadow-xl">
+        <footer class="bg-emerald-950/80 backdrop-blur-md rounded-2xl h-12 sm:h-14 flex items-center overflow-hidden gold-border-glow border border-amber-500/40 shadow-xl">
             <div class="bg-amber-500 text-slate-950 font-black px-4 sm:px-6 h-full flex items-center z-10 shadow-md tracking-widest text-xs sm:text-base uppercase">
                 INFORMASI
             </div>
@@ -339,7 +345,7 @@
             }
         }, 10000);
 
-        // 5. Highlight Waktu Sholat Aktif dengan Animasi Sorot Dinamis
+        // 5. Highlight Waktu Sholat Aktif dengan Sorot Dinamis
         function highlightNextPrayer(waktu) {
             if (Object.keys(prayerTimesData).length === 0) return;
             const currentMins = waktu.getHours() * 60 + waktu.getMinutes();
