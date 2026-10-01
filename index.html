@@ -51,8 +51,8 @@
                 border-color: rgba(234, 179, 8, 0.6);
             }
             50% {
-                transform: scale(1.03);
-                box-shadow: 0 0 30px rgba(250, 204, 21, 0.9);
+                transform: scale(1.02);
+                box-shadow: 0 0 28px rgba(250, 204, 21, 0.85);
                 border-color: rgba(255, 255, 255, 1);
             }
         }
@@ -116,7 +116,7 @@
 <body class="bg-islamic-pro text-white min-h-screen lg:h-screen w-screen flex flex-col justify-between p-3 sm:p-5 select-none overflow-y-auto lg:overflow-hidden gap-3">
 
     <!-- BARIS ATAS: Header -->
-    <header class="bg-emerald-950/65 backdrop-blur-md rounded-2xl flex flex-col sm:flex-row justify-between items-center px-6 sm:px-8 py-3.5 gold-border-glow border border-amber-500/40 shrink-0 z-20 gap-3 sm:gap-0">
+    <header class="bg-emerald-950/65 backdrop-blur-md rounded-2xl flex flex-col sm:flex-row justify-between items-center px-6 sm:px-8 py-3 gold-border-glow border border-amber-500/40 shrink-0 z-20 gap-3 sm:gap-0">
         <!-- Logo Bulat Sempurna & Nama Masjid -->
         <div class="flex items-center gap-4 text-center sm:text-left">
             <img id="logo-img" src="logo.jpeg" 
@@ -126,7 +126,7 @@
             <div>
                 <h1 id="nama-masjid" class="text-2xl sm:text-4xl font-black uppercase tracking-tight text-amber-300 drop-shadow-md leading-tight">Memuat...</h1>
                 <!-- Alamat/Tagline dengan ukuran font diperbesar -->
-                <p id="tagline-masjid" class="text-emerald-100 text-base sm:text-lg lg:text-xl font-extrabold tracking-wide drop-shadow-md max-w-2xl mt-1">Memuat...</p>
+                <p id="tagline-masjid" class="text-emerald-100 text-sm sm:text-base lg:text-lg font-extrabold tracking-wide drop-shadow-md max-w-2xl mt-0.5">Memuat...</p>
             </div>
         </div>
 
@@ -149,46 +149,46 @@
             </div>
         </div>
 
-        <!-- Sisi Kanan (35%): Khotib & Kas Masjid -->
-        <div class="w-full lg:w-[35%] min-h-[22rem] lg:h-full flex flex-col gap-4 shrink-0 lg:shrink">
+        <!-- Sisi Kanan (35%): Khotib & Kas Masjid (Proporsi Tinggi Diatur Presisi) -->
+        <div class="w-full lg:w-[35%] min-h-[22rem] lg:h-full flex flex-col gap-3 shrink-0 lg:shrink">
             
             <!-- Jadwal Khotib Terdekat -->
-            <div class="flex-1 bg-emerald-950/70 backdrop-blur-md rounded-2xl shadow-xl flex flex-col justify-between overflow-hidden gold-border-glow border border-amber-500/40 p-4 sm:p-5">
-                <div class="bg-emerald-900/80 px-4 py-2.5 text-center rounded-xl border border-amber-500/40 shadow-sm mb-2">
-                    <h3 class="text-sm sm:text-base font-black text-amber-400 uppercase tracking-widest drop-shadow-md">Jadwal Khotib & Bilal</h3>
+            <div class="flex-1 bg-emerald-950/70 backdrop-blur-md rounded-2xl shadow-xl flex flex-col justify-between overflow-hidden gold-border-glow border border-amber-500/40 p-3.5 sm:p-4">
+                <div class="bg-emerald-900/80 px-3 py-2 text-center rounded-xl border border-amber-500/40 shadow-sm mb-1.5">
+                    <h3 class="text-xs sm:text-sm font-black text-amber-400 uppercase tracking-widest drop-shadow-md">Jadwal Khotib & Bilal</h3>
                 </div>
-                <div id="khotib-terdekat" class="flex-1 flex flex-col justify-center items-center text-center p-3 rounded-xl card-jumat-ini border border-amber-400/60">
-                    <span class="bg-amber-500 text-slate-950 text-xs font-black px-3 py-1 rounded-full shadow-md uppercase tracking-wider mb-2 animate-bounce">JUM'AT INI</span>
-                    <p id="k-tanggal" class="text-sm sm:text-base text-amber-300 font-extrabold uppercase tracking-wider mb-2">Memuat...</p>
-                    <div class="w-full my-1">
-                        <p class="text-xs font-bold text-emerald-200 uppercase tracking-widest">Khotib:</p>
-                        <p id="k-khotib" class="text-lg sm:text-xl font-black text-white leading-snug drop-shadow-md">Memuat...</p>
+                <div id="khotib-terdekat" class="flex-1 flex flex-col justify-center items-center text-center p-2 rounded-xl card-jumat-ini border border-amber-400/60">
+                    <span class="bg-amber-500 text-slate-950 text-[11px] font-black px-2.5 py-0.5 rounded-full shadow-md uppercase tracking-wider mb-1 animate-bounce">JUM'AT INI</span>
+                    <p id="k-tanggal" class="text-xs sm:text-sm text-amber-300 font-extrabold uppercase tracking-wider mb-1">Memuat...</p>
+                    <div class="w-full my-0.5">
+                        <p class="text-[11px] font-bold text-emerald-200 uppercase tracking-widest">Khotib:</p>
+                        <p id="k-khotib" class="text-base sm:text-lg font-black text-white leading-snug drop-shadow-md">Memuat...</p>
                     </div>
-                    <div class="w-full mt-2">
-                        <p class="text-xs font-bold text-emerald-200 uppercase tracking-widest">Bilal:</p>
-                        <p id="k-bilal" class="text-lg sm:text-xl font-black text-amber-300 leading-snug drop-shadow-md">Memuat...</p>
+                    <div class="w-full mt-1">
+                        <p class="text-[11px] font-bold text-emerald-200 uppercase tracking-widest">Bilal:</p>
+                        <p id="k-bilal" class="text-base sm:text-lg font-black text-amber-300 leading-snug drop-shadow-md">Memuat...</p>
                     </div>
                 </div>
             </div>
 
-            <!-- Informasi Saldo Kas Masjid (Dengan Animasi Kedip pada Saldo Akhir) -->
-            <div class="bg-emerald-950/70 backdrop-blur-md rounded-2xl shadow-xl flex flex-col justify-between overflow-hidden gold-border-glow border border-amber-500/40 p-4 sm:p-5 kas-glow-effect">
-                <div class="bg-emerald-900/80 px-4 py-2.5 text-center rounded-xl border border-amber-500/40 shadow-sm mb-3">
-                    <h3 class="text-sm sm:text-base font-black text-amber-400 uppercase tracking-widest drop-shadow-md">Kas Masjid Al-Khoirot</h3>
+            <!-- Informasi Saldo Kas Masjid (Ukuran Font Saldo Disesuaikan Agar Pas & Tidak Overflow) -->
+            <div class="bg-emerald-950/70 backdrop-blur-md rounded-2xl shadow-xl flex flex-col justify-between overflow-hidden gold-border-glow border border-amber-500/40 p-3.5 sm:p-4 kas-glow-effect">
+                <div class="bg-emerald-900/80 px-3 py-2 text-center rounded-xl border border-amber-500/40 shadow-sm mb-2">
+                    <h3 class="text-xs sm:text-sm font-black text-amber-400 uppercase tracking-widest drop-shadow-md">Kas Masjid Al-Khoirot</h3>
                 </div>
-                <div class="grid grid-cols-3 gap-2.5 text-center">
-                    <div class="bg-emerald-900/50 p-3 rounded-xl border border-emerald-500/40 flex flex-col justify-center shadow-md">
-                        <p class="text-[11px] text-emerald-300 font-bold uppercase tracking-wide">Pemasukan</p>
-                        <p id="saldo-masuk" class="text-sm sm:text-base font-black text-white mt-1">Rp 0</p>
+                <div class="grid grid-cols-3 gap-2 text-center">
+                    <div class="bg-emerald-900/50 p-2.5 rounded-xl border border-emerald-500/40 flex flex-col justify-center shadow-md">
+                        <p class="text-[10px] text-emerald-300 font-bold uppercase tracking-wide">Pemasukan</p>
+                        <p id="saldo-masuk" class="text-xs sm:text-sm font-black text-white mt-1">Rp 0</p>
                     </div>
-                    <div class="bg-emerald-900/50 p-3 rounded-xl border border-emerald-500/40 flex flex-col justify-center shadow-md">
-                        <p class="text-[11px] text-rose-300 font-bold uppercase tracking-wide">Pengeluaran</p>
-                        <p id="saldo-keluar" class="text-sm sm:text-base font-black text-white mt-1">Rp 0</p>
+                    <div class="bg-emerald-900/50 p-2.5 rounded-xl border border-emerald-500/40 flex flex-col justify-center shadow-md">
+                        <p class="text-[10px] text-rose-300 font-bold uppercase tracking-wide">Pengeluaran</p>
+                        <p id="saldo-keluar" class="text-xs sm:text-sm font-black text-white mt-1">Rp 0</p>
                     </div>
-                    <!-- Saldo Akhir dengan Animasi Kedip/Denut -->
-                    <div class="bg-amber-500/30 p-3 rounded-xl border-2 border-amber-400 flex flex-col justify-center shadow-lg saldo-akhir-animated">
-                        <p class="text-[11px] text-amber-200 font-extrabold uppercase tracking-wide">Saldo Akhir</p>
-                        <p id="saldo-total" class="text-sm sm:text-lg font-black text-amber-300 mt-1 animate-pulse">Rp 0</p>
+                    <!-- Saldo Akhir dengan Animasi Kedip/Denut dan Ukuran Font Proporsional -->
+                    <div class="bg-amber-500/30 p-2.5 rounded-xl border-2 border-amber-400 flex flex-col justify-center shadow-lg saldo-akhir-animated">
+                        <p class="text-[10px] text-amber-200 font-extrabold uppercase tracking-wide">Saldo Akhir</p>
+                        <p id="saldo-total" class="text-xs sm:text-base font-black text-amber-300 mt-1 animate-pulse">Rp 0</p>
                     </div>
                 </div>
             </div>
