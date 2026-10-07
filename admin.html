@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel Admin - Masjid Al-Khoirot</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <style>body { font-family: 'Plus Jakarta Sans', sans-serif; }</style>
+</head>
+<body class="bg-slate-100 min-h-screen flex items-center justify-center p-5">
+
+    <div class="bg-white rounded-2xl shadow-xl border border-slate-200 w-full max-w-xl overflow-hidden">
+        <div class="bg-emerald-700 p-6 text-center text-white">
+            <h1 class="text-2xl font-bold">Admin Panel (GitHub API)</h1>
+            <p class="text-emerald-200 text-sm mt-1">Sistem Informasi Masjid Al-Khoirot</p>
+        </div>
+
+        <div class="p-6 sm:p-8">
+            <div id="alert-box" class="hidden p-3 rounded-lg text-sm mb-4 font-medium text-center"></div>
+
+            <form id="admin-form" class="space-y-5">
+                <!-- Otorisasi GitHub -->
+                <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                    <label class="block text-sm font-bold text-slate-700 mb-1">GitHub Personal Access Token (Password)</label>
+                    <div class="flex gap-2">
+                        <input type="password" id="gh-token" class="w-full border border-slate-300 px-3 py-2 rounded-lg text-sm focus:ring-2 focus:ring-emerald-500 outline-none" placeholder="ghp_xxxxxxxxxxxxxxx" required>
+                        <button type="button" onclick="loadData()" class="bg-slate-800 hover:bg-slate-900 text-white px-4 py-2 rounded-lg text-sm font-bold transition">Muat Data</button>
+                    </div>
+                </div>
+
+                <!-- Form Keuangan -->
+                <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 opacity-50 pointer-events-none transition-opacity duration-300" id="form-area">
+                    <h2 class="text-sm font-black text-slate-800 uppercase tracking-wider mb-3">💰 Update Saldo Kas</h2>
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-5">
+                        <div>
+                            <label class="block text-xs font-bold text-emerald-600 mb-1">Pemasukan (Rp)</label>
+                            <input type="text" id="saldo_masuk" class="w-full border border-slate-300 px-3 py-2 rounded-lg text-sm">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-red-500 mb-1">Pengeluaran (Rp)</label>
+                            <input type="text" id="saldo_keluar" class="w-full border border-slate-300 px-3 py-2 rounded-lg text-sm">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-amber-500 mb-1">Saldo Akhir (Rp)</label>
+                            <input type="text" id="saldo_total" class="w-full border border-amber-300 px-3 py-2 rounded-lg text-sm font-bold bg-amber-50">
+                        </div>
+                    </div>
+
+                    <h2 class="text-sm font-black text-slate-800 uppercase tracking-wider mb-3 border-t pt-4">🕌 Tambah Jadwal Khutbah</h2>
+                    <div class="space-y-3">
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 mb-1">Hari & Tanggal</label>
+                            <input type="text" id="k_tanggal" placeholder="Jum'at, 16 Oktober 2026" class="w-full border border-slate-300 px-3 py-2 rounded-lg text-sm">
+                        </div>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                            <div>
+                                <label class="block text-xs font-bold text-slate-700 mb-1">Nama Khotib</label>
+                                <input type="text" id="k_khotib" placeholder="Ust. Fulan" class="w-full border border-slate-300 px-3 py-2 rounded-lg text-sm">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold text-slate-700 mb-1">Nama Bilal</label>
+                                <input type="text" id="k_bilal" placeholder="Bpk. Fulan" class="w-full border border-slate-300 px-3 py-2 rounded-lg text-sm">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <button type="button" id="btn-simpan" onclick="saveData()" class="w-full bg-amber-500 hover:bg-amber-600 text-slate-900 font-black py-3 rounded-xl transition-colors shadow-lg opacity-50 pointer-events-none">Simpan ke Vercel (GitHub)</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // ==========================================
+        // GANTI BAGIAN INI DENGAN DATA GITHUB ANDA
+        // ==========================================
+        const owner = "USERNAME_GITHUB_ANDA"; // Contoh: "AhmadIrsyadil"
+        const repo = "NAMA_REPO_ANDA";        // Contoh: "display-masjid"
+        const filePath = "data.json";         // Pastikan namanya sama persis
+        // ==========================================
+
+        let fileSha = "";
+        let originalJson = {};
+
+        function showAlert(msg, isSuccess) {
+            const box = document.getElementById('alert-box');
+            box.textContent = msg;
+            box.className = `p-3 rounded-lg text-sm mb-4 font-medium text-center block ${isSuccess ? 'bg-emerald-100 text-emerald-700 border-emerald-200 border' : 'bg-red-100 text-red-700 border-red-200 border'}`;
+        }
+
+        async function loadData() {
+            const token = document.getElementById('gh-token').value;
+            if(!token) return showAlert("Masukkan Token GitHub terlebih dahulu!", false);
+
+            showAlert("Memuat data dari GitHub...", true);
+            try {
+                const response = await fetch(`https://api.github.com/repos/${owner}/${repo}/contents/${filePath}`, {
+                    headers: { 'Authorization': `token ${token}` }
+                });
+
+                if(!response.ok) throw new Error("Gagal mengambil data. Pastikan Username, Repo, dan Token benar.");
+
+                const data = await response.json();
+                fileSha = data.sha; // Dibutuhkan GitHub untuk menimpa file
+                
+                // Decode base64 isi file JSON
+                const decodedContent = decodeURIComponent(escape(atob(data.content)));
+                originalJson = JSON.parse(decodedContent);
+
+                // Isi form dengan data yang didapat
+                document.getElementById('saldo_masuk').value = originalJson.saldo?.masuk || '';
+                document.getElementById('saldo_keluar').value = originalJson.saldo?.keluar || '';
+                document.getElementById('saldo_total').value = originalJson.saldo?.total || '';
+
+                showAlert("Data berhasil dimuat! Silakan edit.", true);
+                
+                // Buka kunci form
+                document.getElementById('form-area').classList.remove('opacity-50', 'pointer-events-none');
+                document.getElementById('btn-simpan').classList.remove('opacity-50', 'pointer-events-none');
+
+            } catch (error) {
+                showAlert(error.message, false);
+            }
+        }
+
+        async function saveData() {
+            const token = document.getElementById('gh-token').value;
+            const btn = document.getElementById('btn-simpan');
+            btn.textContent = "Menyimpan...";
+            btn.classList.add('opacity-50', 'pointer-events-none');
+
+            // Update data Kas
+            if(!originalJson.saldo) originalJson.saldo = {};
+            originalJson.saldo.masuk = document.getElementById('saldo_masuk').value;
+            originalJson.saldo.keluar = document.getElementById('saldo_keluar').value;
+            originalJson.saldo.total = document.getElementById('saldo_total').value;
+
+            // Tambah/Update data Khutbah
+            const tgl = document.getElementById('k_tanggal').value;
+            const khot = document.getElementById('k_khotib').value;
+            const bil = document.getElementById('k_bilal').value;
+
+            if(tgl && khot) {
+                let found = false;
+                for(let i=0; i<originalJson.jadwal_khutbah.length; i++) {
+                    if(originalJson.jadwal_khutbah[i].tanggal === tgl) {
+                        originalJson.jadwal_khutbah[i] = { tanggal: tgl, khotib: khot, bilal: bil || '' };
+                        found = true; break;
+                    }
+                }
+                if(!found) originalJson.jadwal_khutbah.push({ tanggal: tgl, khotib: khot, bilal: bil || '' });
+            }
+
+            // Encode kembali ke Base64
+            const updatedContent = btoa(unescape(encodeURIComponent(JSON.stringify(originalJson, null, 4))));
+
+            try {
+                const response = await fetch(`https://api.github.com/repos/${owner}/${repo}/contents/${filePath}`, {
+                    method: 'PUT',
+                    headers: {
+                        'Authorization': `token ${token}`,
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        message: "Update Saldo & Khutbah via Panel Admin",
+                        content: updatedContent,
+                        sha: fileSha
+                    })
+                });
+
+                if(!response.ok) throw new Error("Gagal menyimpan data!");
+
+                // Update SHA baru untuk edit selanjutnya tanpa harus reload
+                const responseData = await response.json();
+                fileSha = responseData.content.sha;
+
+                showAlert("Berhasil disimpan! Vercel sedang memperbarui tampilan (Tunggu sekitar 15-30 detik).", true);
+                
+                document.getElementById('k_tanggal').value = '';
+                document.getElementById('k_khotib').value = '';
+                document.getElementById('k_bilal').value = '';
+
+            } catch (error) {
+                showAlert(error.message, false);
+            } finally {
+                btn.textContent = "Simpan ke Vercel (GitHub)";
+                btn.classList.remove('opacity-50', 'pointer-events-none');
+            }
+        }
+    </script>
+</body>
+</html>
